@@ -1,2 +1,58 @@
-<h1>Goods#admin_edit</h1>
-<p>Find me in app/views/goods/admin_edit.html.erb</p>
+
+<div class="container">
+ 	<div class="row">
+  		<div class="col-md-6">
+  			<p>ジャケット画像</p>
+
+  			<div class="d-flex justify-content-center">
+  				<button type="button" class="btn btn-warning">画像変更</button>
+  			</div>
+  		</div>
+
+  		<div class="col-md-6">
+  			<form action="cgi-bin/formmail.cgi" method="post">
+  				<p>タイトル</p>
+  				<p><input type="text" name="title" size="40"></p>
+  				<p>アーティスト名</p>
+  				<p><input type="text" name="name" size="40"></p>
+  				<p>レーベル名</p>
+  				<p><input type="text" name="rabel" size="40"></p>
+  				<p>ジャンル</p>
+  				<p><input type="text" name="genre" size="40"></p>
+  			</form>
+  		</div>
+
+  		<br>
+  		<br>
+  			<table class="table table-bordered">
+
+  				<colgroup span="1" width="10%"></colgroup>
+  				<colgroup span="1" width="90%"></colgroup>
+
+  				<thead>
+  					<tr align="center">
+  						<th>No.</th>
+  						<th>曲名</th>
+  					</tr>
+  				</thead>
+
+  				<tbody>
+  					<tr>
+  						<td>1</td>
+  						<td>sing1</td>
+  					</tr>
+  					<tr>
+  						<td>2</td>
+  						<td>sing2</td>
+  					</tr>
+  					<tr>
+  						<td>3</td>
+  						<td>sing3</td>
+  					</tr>
+  				</tbody>
+  			</table>
+
+  		</div>
+	</div>
+</div>
+
