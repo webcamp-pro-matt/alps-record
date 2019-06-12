@@ -8,33 +8,74 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+
+  <!--
   <div class="container">
-  <header class="navbar navbar-fixed-top navbar-inverse">
-    <nav class="nav navbar-nav navbar-left">
-        <h1>アルプスレコード </h1>
-    </nav>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <% if user_signed_in? %>
-          <% if current_user.admin_flag == 1 %>
-          <%= link_to "管理者ページ", admin_users_path %>
-          <%= link_to "商品一覧", admin_path %>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <nav class="nav navbar-nav navbar-left">
+          <h1>アルプスレコード </h1>
+      </nav>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <% if current_user.admin_flag == 1 %>
+            <%= link_to "管理者ページ", admin_users_path %>
+            <%= link_to "商品一覧", admin_path %>
+            <% else %>
+            <%= link_to "マイページ",user_path(current_user.id) %>
+            <%= link_to "商品一覧",goods_path %>
+            <%= link_to "カート",cart_index_path %>
+            <%= link_to "ログアウト",destroy_user_session_path, method: :delete %>
+            <% end %>
           <% else %>
-          <%= link_to "マイページ",user_path(current_user.id) %>
+          <%= link_to "新規登録",new_user_registration_path %>
+          <%= link_to "ログイン",new_user_session_path %>
           <%= link_to "商品一覧",goods_path %>
-          <%= link_to "カート",cart_index_path %>
-          <%= link_to "ログアウト",destroy_user_session_path, method: :delete %>
           <% end %>
-        <% else %>
-        <%= link_to "新規登録",new_user_registration_path %>
-        <%= link_to "ログイン",new_user_session_path %>
-        <%= link_to "商品一覧",goods_path %>
-        <% end %>
-      </ul>
-    </nav>
-  </header>
-  </div>
+        </ul>
+      </nav>
+        </header>
+    </div>
+  -->
+
   <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">アルプスレコード</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <!-- ユーザーがログインしているか確認 -->
+          <% if user_signed_in? %>
+
+            <!-- 管理者がログインしている場合 -->
+            <% if current_user.admin_flag == 1  %>
+              <a class="nav-item nav-link active" href="#">管理者ページ</a>
+              <a class="nav-item nav-link" href="#">商品一覧</a>
+            <!-- ユーザーがログインしている場合 -->
+            <% else %>
+                <a class="nav-item nav-link" href="#">マイページ</a>
+                <a class="nav-item nav-link" href="#">商品一覧</a>
+                <a class="nav-item nav-link" href="#">カート</a>
+                <a class="nav-item nav-link disabled" href="#">ログアウト</a>
+            <% end %>
+
+          <!-- ログインしていない場合 -->
+          <% else %>
+            <a class="nav-item nav-link" href="#">新規登録</a>
+            <a class="nav-item nav-link" href="#">ログイン</a>
+            <a class="nav-item nav-link" href="#">商品一覧</a>
+
+          <% end %>
+
+        </div>
+      </div>
+    </nav>
+    <br>
+    
+
     <%= yield %>
   </body>
   <footer>
