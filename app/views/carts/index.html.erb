@@ -1,2 +1,55 @@
-<h1>Carts#index</h1>
-<p>Find me in app/views/carts/index.html.erb</p>
+<div class="container">
+	<div class="row">
+		<!-- カートのテーブル部分 -->
+		<div class="col-md-9">
+			<h1>カート</h1>
+			<table class="table">
+
+				<!-- テーブルのサイズ設定 -->
+				<colgroup span="1" width="20%"></colgroup> <!-- 画像のカラム -->
+				<colgroup span="1" width="20%"></colgroup> <!-- 削除ボタンのカラム -->
+				<colgroup span="1" width="20%"></colgroup> <!-- 商品名のカラム -->
+				<colgroup span="1" width="20%"></colgroup> <!-- 価格のカラム -->
+				<colgroup span="1" width="20%"></colgroup> <!-- 数量のカラム -->
+
+				<thead>
+					<tr>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th>価格</th>
+						<th>数量</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<!-- あくまで仮置きです。imgタグで再設定する必要あり -->
+						<td>画像の置き場</td>
+						<td>
+							<p>商品名</p>
+							<button type="button" class="btn btn-danger btn-sm">削除</button>
+						</td>
+						<td>red-cd</td>
+						<td>¥108円</td>
+						<td>
+							<select name="cnt">
+								<option value="1" selected>1</option>　/*　←初期値は「selected」を入れておく　*/
+								<% for num in 2..99 do %>
+									<option value="<% num %>"><%=num%></option>
+								<% end %>
+							</select>
+							<a>個</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<!-- カートの合計金額、購入ボタン部分 -->
+		<div class="col-md-3">
+			あああああ
+		</div>
+	</div>
+	
+</div>

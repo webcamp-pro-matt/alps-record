@@ -1,2 +1,93 @@
-<h1>Goods#show</h1>
-<p>Find me in app/views/goods/show.html.erb</p>
+
+<div class="container">
+	<h2>商品詳細</h2>
+
+	<div class="row">
+		<!-- ジェケット画像表示させる所 -->
+		<div class="col-md-4">
+				<div class="card">
+					<div class="card-body text-center">
+						ジャケット画像表示させる所
+					</div>
+				</div>
+		</div>
+		<!-- 商品名とかを表示させる所 -->
+		<div class="col-md-8">
+			<div class="card">
+				<div class="card-body text-center">
+					商品タイトルあああ
+				</div>
+			</div>
+
+			<br>
+
+			<div class="card">
+				<div class="card-body text-center">
+					アーティスト名aaa
+				</div>
+			</div>
+
+			<br>
+
+			<div class="card">
+				<div class="card-body text-center">
+					在庫あり
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<br>
+
+	<div class="card">
+		<div class="card-body">
+			<h3>商品説明</h3>
+
+			<p>CD: 1枚目</p>
+			<!-- cssに書いた方がいいかも -->
+			<p  style="line-height: 6px">1.aaaa</p>
+			<p  style="line-height: 6px">2.bbbb</p>
+			<p  style="line-height: 6px">3.cccc</p>
+			<p  style="line-height: 6px">4.dddd</p>
+		</div>
+	</div>
+
+	<br>
+
+	<!-- 商品説明部分 -->
+	<div class="row">
+		<div class="col-md-5">
+			<div class="card">
+				<div class="card-body">
+					<!-- bootstrapのフォームを仮置きしてます。 form_forとかに書き換え必要かもしれません。-->
+					<div class="form-group row">
+					    <label for="text3a" class="col-sm-2 col-form-label">個数</label>
+					    <div class="col-sm-7">
+					      <input type="text" id="text3a" class="form-control">
+					    </div>
+					    <div class="col-sm-3">
+					    	<p>個</p>
+					    </div>
+				  	</div>
+				</div>
+			</div>
+		</div>
+		<!-- 左の余白作る用。 -->
+		<div class="col-md-7">
+		</div>
+	</div>
+	<br>
+
+	<!-- 2つのボタンを中央揃えにする。 -->
+	<div class="row">
+		<div class="col-md-6">
+			<button type="button" class="btn btn-warning btn-lg btn-block">カートに追加</button>
+		</div>
+
+		<div class="col-md-6">
+			<button type="button" class="btn btn-primary btn-lg btn-block">戻る</button>
+		</div>
+	</div>
+
+</div>
