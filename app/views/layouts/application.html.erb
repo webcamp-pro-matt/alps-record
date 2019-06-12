@@ -10,9 +10,8 @@
   </head>
   <div class="container">
   <header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
     <nav class="nav navbar-nav navbar-left">
-        <span>アルプスレコード </span>
+        <h1>アルプスレコード </h1>
     </nav>
     <nav>
       <ul class="nav navbar-nav navbar-right">
@@ -20,25 +19,29 @@
           <% if current_user.admin_flag == 1 %>
           <%= link_to "管理者ページ", admin_users_path %>
           <%= link_to "商品一覧", admin_path %>
-          <% else%>
+          <% else %>
           <%= link_to "マイページ",user_path(current_user.id) %>
           <%= link_to "商品一覧",goods_path %>
           <%= link_to "カート",cart_index_path %>
           <%= link_to "ログアウト",destroy_user_session_path, method: :delete %>
           <% end %>
-      <% else %>
-      <%= link_to "新規登録",new_user_registration_path %>
-      <%= link_to "ログイン",new_user_session_path %>
-      <%= link_to "商品一覧",goods_path %>
-       <% end %>
+        <% else %>
+        <%= link_to "新規登録",new_user_registration_path %>
+        <%= link_to "ログイン",new_user_session_path %>
+        <%= link_to "商品一覧",goods_path %>
+        <% end %>
       </ul>
     </nav>
+  </header>
   </div>
-</header>
     <%= yield %>
   </body>
   <footer>
     <div class="container">
-      <p>アルプスレコード</p>
+      <div class="d-flex justify-content-end">
+        <p>アルプスレコード</p>
+      </div>
+    </div>
+  </footer>
 </html>
 

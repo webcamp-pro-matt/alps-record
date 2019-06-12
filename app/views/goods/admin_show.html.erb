@@ -1,2 +1,90 @@
-<h1>Goods#admin_show</h1>
-<p>Find me in app/views/goods/admin_show.html.erb</p>
+<div class="container">
+	<h2>商品詳細</h2>
+
+	<div class="row">
+		<!-- ジェケット画像表示させる所 -->
+		<div class="col-md-4">
+				<div class="card">
+					<div class="card-body text-center">
+						ジャケット画像表示させる所
+					</div>
+				</div>
+		</div>
+		<!-- 商品名とかを表示させる所 -->
+		<div class="col-md-8">
+			<div class="card">
+				<div class="card-body text-center">
+					商品タイトルあああ
+				</div>
+			</div>
+
+			<br>
+
+			<div class="card">
+				<div class="card-body text-center">
+					アーティスト名aaa
+				</div>
+			</div>
+
+			<br>
+
+			<div class="card">
+				<div class="card-body text-center">
+					在庫あり
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<br>
+
+	<div class="card">
+		<div class="card-body">
+			<h3>商品説明</h3>
+
+			<p>CD: 1枚目</p>
+			<!-- cssに書いた方がいいかも -->
+			<p  style="line-height: 6px">1.aaaa</p>
+			<p  style="line-height: 6px">2.bbbb</p>
+			<p  style="line-height: 6px">3.cccc</p>
+			<p  style="line-height: 6px">4.dddd</p>
+		</div>
+	</div>
+
+	<br>
+
+    <div class="d-flex justify-content-end">
+    	<div class="b" style="border:solid 1px; height: 30px; width: 300px;">
+    		<p style="text-align: center; line-height: 30px;"> 3000円</p>
+    	</div>
+    </div>
+    <br>
+    <div class="d-flex justify-content-end">
+    	<div class="b" style="border:solid 1px; height: 30px; width: 300px;">
+    		<p style="text-align: center; line-height: 30px;"> 在庫数: 99</p>
+    	</div>
+    </div>
+    <br>
+    <div class="d-flex justify-content-end">
+        <div class="b" style="border:solid 1px; height: 30px; width: 300px;">
+    		<p style="text-align: center; line-height: 30px;"> 現ステータス（販売中）</p>
+    	</div>
+    </div>
+    <br>
+
+    <div class="d-flex justify-content-end">
+      <div class="mx-2">
+      <%= link_to "編集", edit_admin_user_path, class:"btn btn-success" %>
+     </div>
+     <div class="mx-2">
+      <%= link_to "削除", admin_goods_path, method: :delete, class:"btn btn-success"
+      %>
+     </div>
+     <div class="mx-2">
+      <%= link_to "戻る", admin_goods_path, class:"btn btn-success" %>
+     </div>
+    </div>
+
+
+</div>
