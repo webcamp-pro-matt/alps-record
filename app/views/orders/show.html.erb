@@ -1,2 +1,107 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<div class="container">
+	<div class="row">
+		<!-- カートのテーブル部分 -->
+		<div class="col-md-9">
+			<h1>カート</h1>
+			<table class="table">
+
+				<!-- テーブルのサイズ設定 -->
+				<colgroup span="1" width="20%"></colgroup> <!-- 画像のカラム -->
+				<colgroup span="1" width="20%"></colgroup> <!-- 削除ボタンのカラム -->
+				<colgroup span="1" width="20%"></colgroup> <!-- 商品名のカラム -->
+				<colgroup span="1" width="20%"></colgroup> <!-- 価格のカラム -->
+				<colgroup span="1" width="20%"></colgroup> <!-- 数量のカラム -->
+
+				<thead>
+					<tr>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th>価格</th>
+						<th>数量</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<!-- あくまで仮置きです。imgタグとかで再設定する必要あり -->
+						<td>画像の置き場</td>
+						<td>
+							<p>商品名</p>
+							<button type="button" class="btn btn-danger btn-sm">削除</button>
+						</td>
+						<td>red-cd</td>
+						<td>¥108円</td>
+						<td>
+							<select name="cnt">
+								<option value="1" selected>1</option>　/*　←初期値は「selected」を入れておく　*/
+								<% for num in 2..99 do %>
+									<option value="<% num %>"><%=num%></option>
+								<% end %>
+							</select>
+							<a>個</a>
+						</td>
+					</tr>
+					<tr>
+						<!-- あくまで仮置きです。imgタグとかで再設定する必要あり -->
+						<td>画像の置き場</td>
+						<td>
+							<p>商品名</p>
+							<button type="button" class="btn btn-danger btn-sm">削除</button>
+						</td>
+						<td>blue-cd</td>
+						<td>¥540円</td>
+						<td>
+							<select name="cnt">
+								<option value="1" selected>1</option>　<!-- ←初期値は「selected」を入れておく -->
+								<% for num in 2..99 do %>
+									<option value="<% num %>"><%=num%></option>
+								<% end %>
+							</select>
+							<a>個</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<!-- カートの合計金額、購入ボタン部分 -->
+		<div class="col-md-3">
+			<br>
+			<br>
+			<div class="card">
+				<div class="card-body text-left">
+					<h4>総計価格</h4>
+				</div>
+				<div class="card-body">
+					<p class="text-left">合計価格:</p>
+					<p class="text-right">¥3,000円</p>
+					<p class="text-left">送料:</p>
+					<p class="text-right">¥500円</p>
+					<p class="text-left">消費税:</p>
+					<p class="text-right">¥280円</p>
+					<hr>
+					<p class="text-left">総計:</p>
+					<p class="text-right">¥3,780円</p>
+					<button type="button" class="btn btn-success btn-lg btn-block">購入</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+
+	<!-- 住所表示部分 -->
+	<div class="card">
+		<div class="card-body">
+			<p class="text-left">〒150-0041</p>
+			<p class="text-center">東京都渋谷区神南1-19-11パークウェースクエア24階</p>
+		</div>
+	</div>
+	<br>
+	<div class="d-flex justify-content-end">
+		<button type="button" class="btn btn-warning btn-sm">購入キャンセル</button>
+		<!-- ボタンとボタンのマージン用。消さないで -->
+		<a>　</a>
+		<button type="button" class="btn btn-info btn-sm">前の画面に戻る</button>
+	</div>
+</div>
