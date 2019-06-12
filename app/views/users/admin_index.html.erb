@@ -1,2 +1,43 @@
-<h1>Users#admin_index</h1>
-<p>Find me in app/views/users/admin_index.html.erb</p>
+<div class="title">
+	<h1>ユーザー一覧</h1>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table">
+			<thead>
+				<colgroup span="1" style="width:5%;">
+				<colgroup span="2" style="width:10%;">
+				<colgroup span="1" style="width:20%;">
+				<colgroup span="1" style="width:7%;">
+
+			<div class="row">
+					<th>ID</th>
+					<th>名前</th>
+					<th>郵便番号</th>
+					<th>住所</th>
+					<th>e-mail</th>
+				</div>
+				
+			</thead>
+			
+			<%# <% @user.each % %>
+			<tbody>
+				<td><%#<%= user.id % %>1</td>
+				<td><%#<%= user.name_kanji_sei % %><%#<%= user.name_kanji_mei % %>見本太郎</td>
+				<td>〒<%#<%= user.post_code %>999-9999</td>
+				<td><%# <%= user.address　%> 東京都見本区見本町マンション５０２</td>
+				<td><%#<%= user.id.mail_address %> aaa@aaa.jp</td>
+			</tbody>
+			
+			</table>
+		</div>
+		
+		  <button type="button" class="btn btn-primary mx-auto">
+ 			<%#<%= link_to "戻る", %>戻る
+ 		  </button>
+ 		
+	</div>
+</div>
+ 
