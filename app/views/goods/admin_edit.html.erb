@@ -2,7 +2,7 @@
 <div class="container">
  	<div class="row">
   		<div class="col-md-6">
-  			<p>ジャケット画像</p>
+        <p>ジャケット画像</p>
 
   			<div class="d-flex justify-content-center">
   				<button type="button" class="btn btn-warning">画像変更</button>
@@ -11,19 +11,37 @@
 
   		<div class="col-md-6">
   			<form action="cgi-bin/formmail.cgi" method="post">
-  				<p>タイトル</p>
-  				<p><input type="text" name="title" size="40"></p>
-  				<p>アーティスト名</p>
-  				<p><input type="text" name="name" size="40"></p>
-  				<p>レーベル名</p>
-  				<p><input type="text" name="rabel" size="40"></p>
+          <p>タイトル</p>
+          <p><input type="text" name="title" size="40"></p>
+          <p>アーティスト名</p>
+          <p><input type="text" name="name" size="40"></p>
+          <p>レーベル名</p>
+          <p><input type="text" name="rabel" size="40"></p>
   				<p>ジャンル</p>
   				<p><input type="text" name="genre" size="40"></p>
   			</form>
+
+        <p>Disk No.選択</p>
+        <select name=”disk”>
+            <option value=”1”>Disk1</option>
+            <option value=”2”>Disk2</option>
+            <option value=”3”>Disk3</option>
+            <option value=”4”>Disk4</option>
+            <option value=”5”>Disk5</option>
+            <option value=”6”>Disk6</option>
+            <option value=”7”>Disk7</option>
+            <option value=”8”>Disk8</option>
+            <option value=”9”>Disk9</option>
+            <option value=”10”>Disk10</option>
+            <option value=”11”>Disk11</option>
+            <option value=”12”>Disk12</option>
+        </select>
+
   		</div>
 
-  		<br>
-  		<br>
+      <p><a>　</a></p>
+
+      <!-- 既存表示画面　-->
   			<table class="table table-bordered">
 
   				<colgroup span="1" width="10%"></colgroup>
@@ -52,7 +70,42 @@
   				</tbody>
   			</table>
 
-  		</div>
-	</div>
+        <!-- 曲追加画面　-->
+
+        <div class="col-md-2">
+          <p>追加曲一覧</p>
+        </div>
+        <div class="col-md-10">
+          <form action="cgi-bin/formmail.cgi" method="post">
+            <p>タイトル</p>
+            <p><input type="text" name="title" size="100"></p>
+              <div class="d-flex justify-content-center">
+                <button type="button" class="btn btn-primary">曲を追加</button>
+              </div>
+          </form>
+        </div>
+  </div>
+
+        <!-- ステータス欄　-->
+
+      <div class="d-flex justify-content-end">
+          <form action="cgi-bin/formmail.cgi" method="post">
+            <p>現価格</p>
+            <p><input type="text" name="title" size="40"></p>
+            <p>在庫数</p>
+            <p><input type="text" name="name" size="40"></p>
+            <p>現ステータス</p>
+            <select name=”status”>
+              <option value=”sale”>販売中</option>
+              <option value=”stopsale”>販売停止中</option>
+            </select>
+          </form>
+        </div>
+        <div class="d-flex justify-content-end">
+          <button type="button" class="btn btn-light">戻る</button>
+          <a>　</a>
+          <button type="button" class="btn btn-warning">変更</button>
+        </div>
+        </div>
 </div>
 
