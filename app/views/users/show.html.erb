@@ -49,7 +49,85 @@
 </body>
 
   	<!-- 購入情報 -->
-  	<!-- k-1の購入履歴をコピー -->
+
+<!-- 購入履歴表示部分 bootstrapでレイアウト変更 -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="text-center">購入履歴</h1>
+      <br>
+      <table class="table table-bordered">
+      <!-- table-striped:ボーダー設定 -->
+
+        <colgroup span="1" width="10%"></colgroup>
+        <colgroup span="1" width="12%"></colgroup>
+        <colgroup span="1" width="38%"></colgroup>
+        <colgroup span="1" width="20%"></colgroup>
+        <colgroup span="1" width="10%"></colgroup>
+        <colgroup span="1" width="10%"></colgroup>
+
+          <thead>
+              <tr>
+                <!-- 文字数で勝手にテーブルサイズが変更される対応 -->
+                  <th class="text-center">購入者</th>
+                  <th class="text-center">購入日</th>
+                  <th class="text-center">購入内容</th>
+                  <th class="text-center">送付先</th>
+                  <th class="text-center">送付先氏名</th>
+                  <th class="text-center">ステータス</th>
+                <!-- text-center:中央揃え -->
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td class="text-center">山田 太郎</td>
+                  <td class="text-center small">2019年5月25日</td>
+                  <td>
+                    <!-- 購入内容を2分割にする。 -->
+                  <div class="row">
+                    <div class="col-md-6">
+                      <!-- small:文字のサイズを75％ -->
+                      <!-- text-right:右揃え -->
+                      <p class="small text-right">シングル/アルバム名:</p>
+                        <p class="small text-right">価格:</p>
+                        <p class="small text-right">購入枚数:</p>
+                        <p class="small text-right">小計:</p>
+
+                        <br>
+
+                        <p class="small text-right">シングル/アルバム名:</p>
+                        <p class="small text-right">価格:</p>
+                        <p class="small text-right">購入枚数:</p>
+                        <p class="small text-right">小計:</p>
+                    </div>
+                    <div class="col-md-6">
+                      <!-- text-center:中央揃え -->
+                      <p class="small text-center">サンプルCDベスト</p>
+                        <p class="small text-center">¥3,000円</p>
+                        <p class="small text-center">2枚</p>
+                        <p class="small text-center">¥6,000円</p>
+
+                        <br>
+
+                        <p class="small text-center">サンプルCDベスト2</p>
+                        <p class="small text-center">¥2,500円</p>
+                        <p class="small text-center">1枚</p>
+                        <p class="small text-center">¥2,500円</p>
+                    </div>
+                  </div>
+                  </td>
+                  <td>
+                    <p class="small text-center">〒999-9999</p>
+                    <p class="small text-center">東京都サンプル区サンプルマンション101</p>
+                  </td>
+                  <td class="text-center">見本 太郎</td>
+                  <td class="text-center"><a href="#">受付</a></td>
+              </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
   	<br>
   	<button type="button" class="btn btn-danger btn-lg btn-block">退会</button>
