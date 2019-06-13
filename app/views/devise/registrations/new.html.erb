@@ -21,6 +21,47 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <!-- カスタマイズ -->
+  <div class="field">
+    <%= f.label :phone_number %><br />
+    <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
+  </div>
+
+  <!-- 子供をカスタマイズ -->
+  <%= f.fields_for :users_children do |child| %>
+  <!-- 郵便番号 -->
+    <div class="field">
+    <%= child.label :post_code %><br />
+    <%= child.text_field :post_code, autofocus: true, autocomplete: "post_code" %>
+    </div>
+  <!-- 姓 -->
+    <div class="field">
+    <%= child.label :name_kanji_sei %><br />
+    <%= child.text_field :name_kanji_sei, autofocus: true, autocomplete: "name_kanji_sei" %>
+    </div>
+  <!-- 名 -->
+    <div class="field">
+    <%= child.label :name_kanji_mei %><br />
+    <%= child.text_field :name_kanji_mei, autofocus: true, autocomplete: "name_kanji_mei" %>
+    </div>
+  <!-- セイ -->
+    <div class="field">
+    <%= child.label :name_kana_sei %><br />
+    <%= child.text_field :name_kana_sei, autofocus: true, autocomplete: "name_kana_sei" %>
+    </div>
+　<!-- メイ -->
+    <div class="field">
+    <%= child.label :name_kana_mei %><br />
+    <%= child.text_field :name_kana_mei, autofocus: true, autocomplete: "name_kana_mei" %>
+    </div>
+  <!-- 住所 -->
+    <div class="field">
+    <%= child.label :address %><br />
+    <%= child.text_field :address, autofocus: true, autocomplete: "address" %>
+    </div>
+  <% end %>
+
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
