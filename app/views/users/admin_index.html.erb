@@ -22,15 +22,17 @@
 				
 			</thead>
 			
-			<%# <% @user.each % %>
-			<tbody>
-				<td><%#<%= user.id % %>1</td>
-				<td><%#<%= user.name_kanji_sei % %><%#<%= user.name_kanji_mei % %>見本太郎</td>
-				<td>〒<%#<%= user.post_code %>999-9999</td>
-				<td><%# <%= user.address　%> 東京都見本区見本町マンション５０２</td>
-				<td><%#<%= user.id.mail_address %> aaa@aaa.jp</td>
-			</tbody>
-			
+			<% @users.each do |user|%>
+				<tbody>
+					<%# @child = Userschild.find(user.id) %>
+					<td><%= user.id %></td>
+					<td><%#= user.name_kanji_sei %><%#= user.name_kanji_mei %></td>
+					<td>〒<%= user.users_child.post_code %></td>
+					<td><%= user.address %></td>
+					<td><%= user.mail_address %></td>
+				</tbody>
+			<% end %>
+
 			</table>
 		</div>
 		
