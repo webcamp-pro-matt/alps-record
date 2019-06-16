@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get "search" => "goods#search"
   get "admin/goods/:id" => "goods#admin_show", as: "show_admin_good"
   get "admin/goods/:id/edit" => "goods#admin_edit", as: "edit_admin_good"
-  post "admin/goods/:id" => "goods#admin_create", as: "create_admin_good"
+  post "admin/goods/" => "goods#admin_create", as: "create_admin_good"
   delete "admin/goods/:id" => "goods#admin_destroy", as: "destroy_admin_good"
   put "admin/goods/:id" => "goods#admin_update", as: "update_admin_good"
 

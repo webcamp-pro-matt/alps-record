@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_10_074225) do
+ActiveRecord::Schema.define(version: 2019_06_16_065102) do
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2019_06_10_074225) do
     t.string "artist"
     t.string "goods_title"
     t.integer "album_flag"
-    t.string "jacket_image"
+    t.string "jacket_image_id"
     t.string "type"
     t.string "rabel"
     t.integer "price"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2019_06_10_074225) do
   create_table "music_titles", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "goods_id"
+    t.integer "good_id"
     t.string "song"
     t.integer "song_number"
     t.integer "disc_number"

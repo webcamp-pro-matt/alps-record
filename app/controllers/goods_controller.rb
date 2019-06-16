@@ -9,15 +9,22 @@ class GoodsController < ApplicationController
   end
 
   def admin_index
+    @goods = Good.all
   end
 
   def admin_show
   end
 
   def admin_new
+    @goods = Good.new
+    @goods.music_titles.build
   end
 
   def admin_create
+    @good = Good.new(good_params)
+    @good.save
+    # 商品一覧ページにて戻す
+    redirect_to admin_goods_path
   end
 
   def admin_destroy
@@ -28,4 +35,14 @@ class GoodsController < ApplicationController
 
   def admin_update
   end
+
+  # ストロングパラメーター
+  private
+  def good_params
+    # モデルの複数形_attributes
+    params.require(:good).permit(:id, :artist, :goods_title , :jacket_image, :price, :rabel, :stock, music_titles_attributes:[:song])
+    #params.require(:music_title).permit(:song)
+  end
+
+
 end

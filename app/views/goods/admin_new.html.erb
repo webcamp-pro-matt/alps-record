@@ -1,65 +1,77 @@
 
 <div class="containar">
+  <%= form_for @goods, url: create_admin_good_path do |f| %>
+  <%#= form_for @goods, :url => {:action => 'admin_create'} do |f| %>
   <div class="row">
-  	<div class="col-md-2">
-  		<div class="d-flex justify-content-center">
-  			<p>アーティスト名</p>
-  		</div>
-  	</div>
-  	<div class="col-md-10">
-  		<p><input type="text" name="title" size="100"></p>
-  	</div>
+    
+    	<div class="col-md-2">
+    		<div class="d-flex justify-content-center">
+    			<p>アーティスト名</p>
+    		</div>
+    	</div>
+    	<div class="col-md-10">
+    		<!--<p><input type="text" name="title" size="100"></p>-->
+        <%= f.text_field :artist %>
+    	</div>
 
-  	<div class="col-md-2">
-  		<div class="d-flex justify-content-center">
-  			<p>シングル・アルバム名</p>
-  		</div>
-  	</div>
-  	<div class="col-md-10">
-  		<p><input type="text" name="title" size="100"></p>
-  	</div>
+    	<div class="col-md-2">
+    		<div class="d-flex justify-content-center">
+    			<p>シングル・アルバム名</p>
+    		</div>
+    	</div>
+    	<div class="col-md-10">
+    		<!--<p><input type="text" name="title" size="100"></p>-->
+        <%= f.text_field :goods_title %>
+    	</div>
 
-  	<div class="col-md-2">
-  		<div class="d-flex justify-content-center">
-  			<p>ジャケット画像</p>
-  		</div>
-  	</div>
-  	<div class="col-md-10">
-  		<p><input type="text" name="title" size="100"></p>
-  	</div>
+    	<div class="col-md-2">
+    		<div class="d-flex justify-content-center">
+    			<p>ジャケット画像</p>
+    		</div>
+    	</div>
+    	<div class="col-md-10">
+    		<!--<p><input type="text" name="title" size="100"></p>-->
+        <%= f.attachment_field :jacket_image %>
+    	</div>
 
-  	<div class="col-md-2">
-  		<div class="d-flex justify-content-center">
-  			<p>価格（税別価格）</p>
-  		</div>
-  	</div>
-  	<div class="col-md-10">
-  		<p><input type="text" name="title" size="100"></p>
-  	</div>
+    	<div class="col-md-2">
+    		<div class="d-flex justify-content-center">
+    			<p>価格（税別価格）</p>
+    		</div>
+    	</div>
+    	<div class="col-md-10">
+    		<!--<p><input type="text" name="title" size="100"></p>-->
+        <%= f.text_field :price %>
+    	</div>
 
-  	<div class="col-md-2">
-  		<div class="d-flex justify-content-center">
-  			<p>レーベル名</p>
-  		</div>
-  	</div>
-  	<div class="col-md-10">
-  		<p><input type="text" name="title" size="100"></p>
-  	</div>
+    	<div class="col-md-2">
+    		<div class="d-flex justify-content-center">
+    			<p>レーベル名</p>
+    		</div>
+    	</div>
+    	<div class="col-md-10">
+    		<!--<p><input type="text" name="title" size="100"></p>-->
+        <%= f.text_field :rabel %>
+    	</div>
+    
   </div>
 
-  <div class="row">
-  	<div class="col-md-2">
-  		<div class="d-flex justify-content-center">
-  			<p>ディスク内の曲</p>
-  		</div>
-  	</div>
-  	<div class="col-md-10">
-  		<p><input type="text" name="title" size="100"></p>
-  	　<div class="d-flex justify-content-center">
-  		<button type="button" class="btn btn-primary">曲を追加</button>
-  	　</div>
+  <%= f.fields_for :music_titles do |music| %>
+    <div class="row">
+    	<div class="col-md-2">
+    		<div class="d-flex justify-content-center">
+    			<p>ディスク内の曲</p>
+    		</div>
+    	</div>
+    	<div class="col-md-10">
+    		<!--<p><input type="text" name="title" size="100"></p>-->
+        <%= music.text_field :song %>
+    	　<div class="d-flex justify-content-center">
+    		<button type="button" class="btn btn-primary">曲を追加</button>
+    	　</div>
+      </div>
     </div>
-  </div>
+  <% end %>
 
   <br>
 
@@ -70,8 +82,11 @@
   		</div>
   	</div>
   	<div class="col-md-10">
-  		<p><input type="text" name="title" size="100"></p>
+  		<!--<p><input type="text" name="title" size="100"></p>-->
+      <%= f.text_field :stock %>
   	</div>
   </div>
-  <button class="btn btn-primary btn-block">更新</button>
+  <!--<button class="btn btn-primary btn-block">更新</button>-->
+  <%= f.submit "更新", class: "btn btn-primary btn-block" %>
+  <% end %>
 </div>
