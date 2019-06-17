@@ -13,6 +13,8 @@ class GoodsController < ApplicationController
   end
 
   def admin_show
+    @good = Good.find(params[:id])
+    @music_titles = MusicTitle.where(good_id: @good.id)
   end
 
   def admin_new
@@ -28,9 +30,15 @@ class GoodsController < ApplicationController
   end
 
   def admin_destroy
+    @good = Good.find(params[:id])
+    @good.destroy
+    redirect_to admin_goods_path
   end
 
   def admin_edit
+    @good = Good.find(params[:id])
+    @music_titles = MusicTitle.where(good_id: @good.id)
+
   end
 
   def admin_update

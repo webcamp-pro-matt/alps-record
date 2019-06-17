@@ -1,8 +1,11 @@
 
 <div class="container">
  	<div class="row">
+    <%= form_for @good, url: update_admin_good_path(@good.id) do |f| %>
   		<div class="col-md-6">
         <p>ジャケット画像</p>
+
+        <%= attachment_image_tag @good, :jacket_image, format: "jpeg", fallback: "no_image.jpg", size: "300x300" %>
 
   			<div class="d-flex justify-content-center">
   				<button type="button" class="btn btn-warning">画像変更</button>
@@ -12,13 +15,13 @@
   		<div class="col-md-6">
   			<form action="cgi-bin/formmail.cgi" method="post">
           <p>タイトル</p>
-          <p><input type="text" name="title" size="40"></p>
+          <p><%= f.text_field :goods_title %></p>
           <p>アーティスト名</p>
-          <p><input type="text" name="name" size="40"></p>
+          <p><%= f.text_field :artist %></p>
           <p>レーベル名</p>
-          <p><input type="text" name="rabel" size="40"></p>
+          <p><%= f.text_field :rabel %></p>
   				<p>ジャンル</p>
-  				<p><input type="text" name="genre" size="40"></p>
+  				<p><%= f.text_field :type %></p>
   			</form>
 
         <p>Disk No.選択</p>
@@ -54,20 +57,16 @@
   					</tr>
   				</thead>
 
-  				<tbody>
-  					<tr>
-  						<td>1</td>
-  						<td>sing1</td>
-  					</tr>
-  					<tr>
-  						<td>2</td>
-  						<td>sing2</td>
-  					</tr>
-  					<tr>
-  						<td>3</td>
-  						<td>sing3</td>
-  					</tr>
+          <tbody>
+            <%= f.fields_for :music_titles do |title| %>
+              <!-- 2曲目は後回しで -->
+              <tr>
+                <td><%= title.text_field :song_number, autofocus: true, autocomplete: "song_number" %></td>
+                <td><%= title.text_field :song, autofocus: true, autocomplete: "song" %></td>
+              </tr>
+            <% end %>
   				</tbody>
+
   			</table>
 
         <!-- 曲追加画面　-->
@@ -106,6 +105,7 @@
           <a>　</a>
           <button type="button" class="btn btn-warning">変更</button>
         </div>
-        </div>
+    <% end %>
+  </div>
 </div>
 
