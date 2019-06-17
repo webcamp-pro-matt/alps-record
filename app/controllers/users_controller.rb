@@ -16,6 +16,10 @@ class UsersController < ApplicationController
 
   def admin_index
     @users = User.all
+    # 仮で書いてます
+    @children = UsersChild.all
+    # テストです
+    @temp_array = Array.new
   end
 
   def admin_show

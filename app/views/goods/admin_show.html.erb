@@ -6,7 +6,7 @@
 		<div class="col-md-4">
 				<div class="card">
 					<div class="card-body text-center">
-						ジャケット画像表示させる所
+						<%= attachment_image_tag @good, :jacket_image, format: "jpeg", fallback: "no_image.jpg", size: "300x300" %>
 					</div>
 				</div>
 		</div>
@@ -14,7 +14,8 @@
 		<div class="col-md-8">
 			<div class="card">
 				<div class="card-body text-center">
-					商品タイトルあああ
+					<!--商品タイトル -->
+					<%= "タイトル:　" + @good.goods_title %>
 				</div>
 			</div>
 
@@ -22,7 +23,8 @@
 
 			<div class="card">
 				<div class="card-body text-center">
-					アーティスト名aaa
+					<!-- アーティスト名 -->
+					<%= "アーティスト名:　" + @good.artist %>
 				</div>
 			</div>
 
@@ -30,6 +32,7 @@
 
 			<div class="card">
 				<div class="card-body text-center">
+					<!-- 後で修正の必要あり -->
 					在庫あり
 				</div>
 			</div>
@@ -43,12 +46,19 @@
 		<div class="card-body">
 			<h3>商品説明</h3>
 
+
 			<p>CD: 1枚目</p>
 			<!-- cssに書いた方がいいかも -->
-			<p  style="line-height: 6px">1.aaaa</p>
-			<p  style="line-height: 6px">2.bbbb</p>
-			<p  style="line-height: 6px">3.cccc</p>
-			<p  style="line-height: 6px">4.dddd</p>
+			<% @music_titles.each do |title| %>
+				<!-- 後でなおしましょう -->
+				<p  style="line-height: 6px"><%= "1曲目:　" + title.song %></p>
+				<!--
+				<p  style="line-height: 6px">1.aaaa</p>
+				<p  style="line-height: 6px">2.bbbb</p>
+				<p  style="line-height: 6px">3.cccc</p>
+				<p  style="line-height: 6px">4.dddd</p>
+					-->
+			<% end %>
 		</div>
 	</div>
 
@@ -56,18 +66,20 @@
 
     <div class="d-flex justify-content-end">
     	<div class="b" style="border:solid 1px; height: 30px; width: 300px;">
+    		<!-- 後でなおします -->
     		<p style="text-align: center; line-height: 30px;"> 3000円</p>
     	</div>
     </div>
     <br>
     <div class="d-flex justify-content-end">
     	<div class="b" style="border:solid 1px; height: 30px; width: 300px;">
-    		<p style="text-align: center; line-height: 30px;"> 在庫数: 99</p>
+    		<p style="text-align: center; line-height: 30px;"><%= "在庫数:　" + @good.stock.to_s %></p>
     	</div>
     </div>
     <br>
     <div class="d-flex justify-content-end">
         <div class="b" style="border:solid 1px; height: 30px; width: 300px;">
+        	<!-- 後でなおします -->
     		<p style="text-align: center; line-height: 30px;"> 現ステータス（販売中）</p>
     	</div>
     </div>
@@ -75,10 +87,10 @@
 
     <div class="d-flex justify-content-end">
       <div class="mx-2">
-      <%= link_to "編集", edit_admin_user_path, class:"btn btn-success" %>
+      <%= link_to "編集", edit_admin_good_path(@good.id), class:"btn btn-success" %>
      </div>
      <div class="mx-2">
-      <%= link_to "削除", admin_goods_path, method: :delete, class:"btn btn-success"
+      <%= link_to "削除", destroy_admin_good_path(@good.id), method: :delete, class:"btn btn-success",data: {confirm:"削除しますか？"}
       %>
      </div>
      <div class="mx-2">
