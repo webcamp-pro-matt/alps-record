@@ -10,13 +10,17 @@ Rails.application.routes.draw do
   get "/" => "home#top"
   get "home/done" => "home#done"
 
-  get "admin/users" => "users#admin"
-  get "admin/" => "users#admin_index"
-  get "admin/show/:id" => "users#admin_show"
-  delete "admin/users/:id" => "users#admin_destroy", as: "destroy_admin_user"
-  get "admin/users/:id/edit" => "users#admin_edit", as: "edit_admin_user"
-  # put "admin/users/:id" => "users#admin_update", as: "update_admin_user"
-  patch "admin/users/:id" => "users#admin_update", as: "update_admin_user"
+
+  namespace :admin do 
+      resources :users
+  end
+  # get "admin/users" => "users#admin"
+  # get "admin/" => "users#admin_index"
+  # get "admin/show/:id" => "users#admin_show"
+  # delete "admin/users/:id" => "users#admin_destroy", as: "destroy_admin_user"
+  # get "admin/users/:id/edit" => "users#admin_edit", as: "edit_admin_user"
+  # # put "admin/users/:id" => "users#admin_update", as: "update_admin_user"
+  # patch "admin/users/:id" => "users#admin_update", as: "update_admin_user"
 
   get "admin/goods/" => "goods#admin_index"
   get "admin/goods/new" => "goods#admin_new"
