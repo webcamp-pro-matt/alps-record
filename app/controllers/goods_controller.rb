@@ -42,13 +42,19 @@ class GoodsController < ApplicationController
   end
 
   def admin_update
+    @good = Good.find(params[:id])
+    if @good.update(good_params)
+      redirect_to admin_good_path
+    else
+      render "admin/edit"
+    end
   end
 
   # ストロングパラメーター
   private
   def good_params
     # モデルの複数形_attributes
-    params.require(:good).permit(:id, :artist, :goods_title , :jacket_image, :price, :rabel, :stock, music_titles_attributes:[:song])
+    params.require(:good).permit(:id, :artist, :goods_title , :jacket_image, :price, :rabel, :stock, music_titles_attributes:[:id, :song])
     #params.require(:music_title).permit(:song)
   end
 

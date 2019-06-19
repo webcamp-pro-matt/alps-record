@@ -36,8 +36,10 @@ class UsersController < ApplicationController
 
   def admin_update
     @user = User.find(params[:id])
+    #@user = User.find(params[:id])
+    #@users_children = UsersChild.find_by(user_id: @user.id)
     if @user.update(user_params)
-      #redirect_to admin_path
+      redirect_to admin_path
     else
       render "admin/edit"
     end
@@ -46,7 +48,7 @@ class UsersController < ApplicationController
 private
 
   def user_params
-    params.require(:user).permit(:email, :phone_number, user_children_attributes:[:name_kanji_mei, :name_kanji_sei, :name_kana_mei, :name_kana_sei, :post_code, :address] )
+    params.require(:user).permit(:email, :phone_number, users_children_attributes:[:id, :name_kanji_mei, :name_kanji_sei, :name_kana_mei, :name_kana_sei, :post_code, :address] )
   end
 
 

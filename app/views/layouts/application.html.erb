@@ -30,7 +30,8 @@
                 <a class="nav-item nav-link" href="#">マイページ</a>
                 <a class="nav-item nav-link" href="#">商品一覧</a>
                 <a class="nav-item nav-link" href="#">カート</a>
-                <a class="nav-item nav-link disabled" href="#">ログアウト</a>
+                <!-- <a class="nav-item nav-link disabled" href="#">ログアウト</a> -->
+                <%= link_to 'logout', destroy_user_session_path, method: :delete %>
             <% end %>
 
           <!-- ログインしていない場合 -->
