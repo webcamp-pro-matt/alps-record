@@ -1,3 +1,3 @@
 class Cart < ApplicationRecord
-	belongs_to :good
+	belongs_to :good, optional: true
 end

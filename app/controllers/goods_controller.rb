@@ -10,7 +10,6 @@ class GoodsController < ApplicationController
     @good = Good.find(params[:id])
     @music_titles = MusicTitle.where(good_id: @good.id)
     @cart = Cart.new
-    @cart.carts.build
   end
 
   def admin_index
