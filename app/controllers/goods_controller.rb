@@ -1,11 +1,16 @@
 class GoodsController < ApplicationController
   def index
+    @goods = Good.all
   end
 
   def search
   end
 
   def show
+    @good = Good.find(params[:id])
+    @music_titles = MusicTitle.where(good_id: @good.id)
+    @cart = Cart.new
+    @cart.carts.build
   end
 
   def admin_index
