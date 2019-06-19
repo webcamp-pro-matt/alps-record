@@ -1,5 +1,5 @@
 <h1>編集</h1>
-<%= form_for @user url: update_admin_user_path(@user.id) do |f| %>
+<%= form_for @user, url: update_admin_user_path(@user.id) do |f| %>
   
 
   <%= f.fields_for :users_children do |child| %>

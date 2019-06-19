@@ -44,7 +44,7 @@ class GoodsController < ApplicationController
   def admin_update
     @good = Good.find(params[:id])
     if @good.update(good_params)
-      redirect_to admin_good_path
+      redirect_to admin_goods_path
     else
       render "admin/edit"
       #aaa
