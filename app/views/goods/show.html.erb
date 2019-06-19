@@ -77,6 +77,10 @@
 						    <div class="col-sm-7">
 						     <!-- <input type="text" id="text3a" class="form-control"> -->
 						     <%= cart.number_field :cart_value %>
+						     <%= cart.hidden_field :goods_id, :value => @good.id  %>
+						     <%# cart.fields_for :goods do |good| %>
+						     <%#= good.hidden_field :goods_id, :value => @good.id %>
+						     <%# end %>
 						    </div>
 						    <div class="col-sm-3">
 						    	<p>個</p>
