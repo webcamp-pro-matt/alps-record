@@ -47,6 +47,7 @@ class GoodsController < ApplicationController
       redirect_to admin_good_path
     else
       render "admin/edit"
+      #aaa
     end
   end
 
