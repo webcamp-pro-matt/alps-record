@@ -1,125 +1,171 @@
 <div class="container">
+	<%= form_for @order do |f| %>
 
-	<!-- お支払い方法部分 -->
-	<h1>お支払い方法</h1>
-	<div class="card">
-		<div class="card-body">
+		<!-- お支払い方法部分 -->
+		<h1>お支払い方法</h1>
+		<div class="card">
+			<div class="card-body">
 
-			<div class="form-check p-3 mb-2 bg-primary text-white rounded">
-				<!-- レイアウト崩れたため、aタグで無理やり設定してます。 -->
-				<a>　</a>
-			<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-			<label class="form-check-label" for="exampleRadios1">
-				銀行振込
-			</label>
-			</div>
-			<div class="form-check p-3 mb-2 bg-warning text-white rounded">
-				<!-- レイアウト崩れたため、aタグで無理やり設定してます。 -->
-				<a>　</a>
-			<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-			<label class="form-check-label" for="exampleRadios2">
-				クレジットカード
-			</label>
-			</div>
-			<div class="form-check p-3 mb-2 bg-info text-white rounded">
-				<!-- レイアウト崩れたため、aタグで無理やり設定してます。 -->
-				<a>　</a>
-			<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-			<label class="form-check-label" for="exampleRadios2">
-				代金引換
-			</label>
-			</div>
-
-
-		</div>
-	</div>
-	<br>
-
-
-	<!-- 配送先選択部分 -->
-	<h1>配送先選択</h1>
-	<div class="card">
-		<div class="card-body">
-
-			<div class="form-check p-3 mb-2 bg-secondary text-white rounded">
-				<!-- レイアウト崩れたため、aタグで無理やり設定してます。 -->
-				<a>　</a>
-			<input class="form-check-input" type="radio" name="exampleRadios2" id="exampleRadios1" value="option1" checked>
-			<label class="form-check-label" for="exampleRadios1">
-				<p>〒150-0041</p>
-				<p class="text-center">東京都渋谷区神南1-19-11パークウェースクエア23階</p>
-			</label>
-			</div>
-
-			<div class="form-check p-3 mb-2 bg-secondary text-white rounded">
+				<div class="form-check p-3 mb-2 bg-primary text-white rounded">
 					<!-- レイアウト崩れたため、aタグで無理やり設定してます。 -->
 					<a>　</a>
-				<input class="form-check-input" type="radio" name="exampleRadios2" id="exampleRadios2" value="option2">
-				<div class="d-flex justify-content-center">
-					<label class="form-check-label" for="exampleRadios2">
-							<p>上記以外の配送先をご希望のお客様は、左のボタンをクリックしていただき、<br>
-							下記の記入欄に、お届け先のお名前、住所、郵便番号（ハイフン付き）をご記入ください。</p>
-					</label>
+				<!-- <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+				<label class="form-check-label" for="exampleRadios1">
+					銀行振込
+				</label> -->
+				<label>
+					<%= f.radio_button :payment_method, 0,class: "form-check-input" %>銀行振込
+				</label>
+				</div>
+				<div class="form-check p-3 mb-2 bg-warning text-white rounded">
+					<!-- レイアウト崩れたため、aタグで無理やり設定してます。 -->
+					<a>　</a>
+				<!-- <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+				<label class="form-check-label" for="exampleRadios2">
+					クレジットカード
+				</label> -->
+				<label>
+					<%= f.radio_button :payment_method, 1,class: "form-check-input" %>クレジットカード
+				</label>
+				</div>
+				<div class="form-check p-3 mb-2 bg-info text-white rounded">
+					<!-- レイアウト崩れたため、aタグで無理やり設定してます。 -->
+					<a>　</a>
+				<!-- <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+				<label class="form-check-label" for="exampleRadios2">
+					代金引換
+				</label> -->
+				<label>
+					<%= f.radio_button :payment_method, 2,class: "form-check-input" %>代金引換
+				</label>
 				</div>
 
-				<!-- bootstrapで表示させてますが、railsで書き直してください。-->
-				<form>
 
-					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group">
-							  <label for="text3">名前（漢字）姓:</label>
-							  <input type="text" id="text2" class="form-control">
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-							  <label for="text3">名前（漢字）名:</label>
-							  <input type="text" id="text3" class="form-control">
-							</div>
-						</div>
-					</div>
-
-
-					<!-- 名前の段組み -->
-					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group">
-							  <label for="text3">名前（カナ）セイ:</label>
-							  <input type="text" id="text4" class="form-control">
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-							  <label for="text3">名前（カナ）メイ:</label>
-							  <input type="text" id="text5" class="form-control">
-							</div>
-						</div>
-					</div>
-
-					<div class="form-group">
-					  <label for="text1">郵便番号:</label>
-					  <input type="text" id="text1" class="form-control">
-					</div>
-					<div class="form-group">
-					  <label for="textarea1">住所:</label>
-					  <textarea id="textarea1" class="form-control"></textarea>
-					</div>
-
-
-
-
-				</form>
 			</div>
-
-
-
-
 		</div>
-	</div>
-	<br>
+		<br>
 
-	<button type="button" class="btn btn-success btn-lg btn-block">購入確認ページへ</button>
+
+		<!-- 配送先選択部分 -->
+		<h1>配送先選択</h1>
+		<div class="card">
+			<div class="card-body">
+
+				<div class="form-check p-3 mb-2 bg-secondary text-white rounded">
+					<!-- レイアウト崩れたため、aタグで無理やり設定してます。 -->
+					<a>　</a>
+				<!-- <input class="form-check-input" type="radio" name="exampleRadios2" id="exampleRadios1" value="option1" checked>
+				<label class="form-check-label" for="exampleRadios1">
+					<p>〒150-0041</p>
+					<p class="text-center">東京都渋谷区神南1-19-11パークウェースクエア23階</p>
+				</label> -->
+				<% @user_children.each do |child| %>
+					<label>
+						<%= f.radio_button :delivery_select_flag, 1, class: "form-check-input" %>
+						<p>〒<%= child.post_code.chars[0] + child.post_code.chars[1] + child.post_code.chars[2] + "-" + child.post_code.chars[3] + child.post_code.chars[4] + child.post_code.chars[5] + child.post_code.chars[6] %></p>
+						<p><%= child.address %></p>
+					</label>
+				<% end %>
+				</div>
+
+				<div class="form-check p-3 mb-2 bg-secondary text-white rounded">
+						<!-- レイアウト崩れたため、aタグで無理やり設定してます。 -->
+						<a>　</a>
+					<!-- <input class="form-check-input" type="radio" name="exampleRadios2" id="exampleRadios2" value="option2">
+					<div class="d-flex justify-content-center">
+						<label class="form-check-label" for="exampleRadios2">
+								<p>上記以外の配送先をご希望のお客様は、左のボタンをクリックしていただき、<br>
+								下記の記入欄に、お届け先のお名前、住所、郵便番号（ハイフン付き）をご記入ください。</p>
+						</label>
+					</div> -->
+					<label>
+
+						<%= f.radio_button :delivery_select_flag, 0, class: "form-check-input" %>
+						<div class="d-flex justify-content-center">
+							<p>上記以外の配送先をご希望のお客様は、左のボタンをクリックしていただき、<br>
+							下記の記入欄に、お届け先のお名前、住所、郵便番号（ハイフン付き）をご記入ください。</p>
+						</div>
+
+						<label for="text3">名前（漢字）:</label>
+						<%= f.text_field :other_name, class: "form-control" %>
+
+						<label for="text3">名前（カナ）:</label>
+						<%= f.text_field :other_kana, class: "form-control" %>
+
+						<label for="text3">郵便番号:</label>
+						<%= f.text_field :other_post_code, class: "form-control" %>
+
+						<label for="text3">住所:</label>
+						<%= f.text_field :other_address, class: "form-control" %>
+
+
+
+						<!-- bootstrapで表示させてますが、railsで書き直してください。-->
+						<!-- <form>
+
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+									  <label for="text3">名前（漢字）姓:</label>
+									  <input type="text" id="text2" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+									  <label for="text3">名前（漢字）名:</label>
+									  <input type="text" id="text3" class="form-control">
+									</div>
+								</div>
+							</div> -->
+
+
+							<!-- 名前の段組み -->
+							<!-- <div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+									  <label for="text3">名前（カナ）セイ:</label>
+									  <input type="text" id="text4" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+									  <label for="text3">名前（カナ）メイ:</label>
+									  <input type="text" id="text5" class="form-control">
+									</div>
+								</div>
+							</div> -->
+
+							<!-- <div class="form-group">
+							  <label for="text1">郵便番号:</label>
+							  <input type="text" id="text1" class="form-control">
+							</div>
+							<div class="form-group">
+							  <label for="textarea1">住所:</label>
+							  <textarea id="textarea1" class="form-control"></textarea>
+							</div>
+
+
+
+
+						</form> -->
+
+					</label>
+					
+
+					
+				</div>
+
+
+
+
+			</div>
+		</div>
+		<br>
+
+		<!-- <button type="button" class="btn btn-success btn-lg btn-block">購入確認ページへ</button> -->
+		<%= f.submit "購入確認ページへ", class: "btn btn-success btn-lg btn-block" %>
+
+	<% end %>
 
 </div>
 

@@ -7,8 +7,9 @@ class User < ApplicationRecord
   #モデル指定
   has_many :users_children
   has_many :carts
+  has_many :orders
   #親から子のモデルをいじるとき作成する
-  accepts_nested_attributes_for :users_children, :carts
+  accepts_nested_attributes_for :users_children, :carts, :orders
 
 
 

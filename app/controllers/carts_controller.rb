@@ -2,6 +2,13 @@ class CartsController < ApplicationController
   def index
   	@user = current_user
     @carts = @user.carts
+    # 合計金額の定義
+    @price = 0
+    @carts.each do |cart|
+      @price = @price + (cart.good.price*cart.cart_value)
+    end
+    #binding.pry
+
   end
 
   def create
@@ -16,9 +23,15 @@ class CartsController < ApplicationController
   end
 
   def update
+    @cart = Cart.find(params[:id])
+    @cart.update(cart_params)
+    redirect_to carts_path
   end
 
   def destroy
+    @cart = Cart.find(params[:id])
+    @cart.destroy
+    redirect_to carts_path
   end
 
   private
