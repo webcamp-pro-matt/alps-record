@@ -2,69 +2,62 @@
 	<div class="row">
 		<!-- カートのテーブル部分 -->
 		<div class="col-md-9">
-			<h1>カート</h1>
-			<table class="table">
+				<h1>カート</h1>
+				<table class="table">
 
-				<!-- テーブルのサイズ設定 -->
-				<colgroup span="1" width="20%"></colgroup> <!-- 画像のカラム -->
-				<colgroup span="1" width="20%"></colgroup> <!-- 削除ボタンのカラム -->
-				<colgroup span="1" width="20%"></colgroup> <!-- 商品名のカラム -->
-				<colgroup span="1" width="20%"></colgroup> <!-- 価格のカラム -->
-				<colgroup span="1" width="20%"></colgroup> <!-- 数量のカラム -->
+					<!-- テーブルのサイズ設定 -->
+					<colgroup span="1" width="20%"></colgroup> <!-- 画像のカラム -->
+					<colgroup span="1" width="20%"></colgroup> <!-- 削除ボタンのカラム -->
+					<colgroup span="1" width="20%"></colgroup> <!-- 商品名のカラム -->
+					<colgroup span="1" width="20%"></colgroup> <!-- 価格のカラム -->
+					<colgroup span="1" width="20%"></colgroup> <!-- 数量のカラム -->
 
-				<thead>
-					<tr>
-						<th></th>
-						<th></th>
-						<th>商品名</th>
-						<th>価格</th>
-						<th>数量</th>
-					</tr>
-				</thead>
+					<thead>
+						<tr>
+							<th></th>
+							<th></th>
+							<th>商品名</th>
+							<th>価格</th>
+							<th>数量</th>
+						</tr>
+					</thead>
 
-				<tbody>
-					<tr>
+					<tbody>
 						<% @carts.each do |cart| %>
-						<!-- あくまで仮置きです。imgタグとかで再設定する必要あり -->
-						<td><%= attachment_image_tag cart.good, :jacket_image, format: "jpeg", fallback: "no_image.jpg", size: "100x100" %></td>
-						<td>
-							<p>商品名</p>
-							<button type="button" class="btn btn-danger btn-sm">削除</button>
-						</td>
-						<td><%= cart.good.goods_title %></td>
-						<td><%= cart.good.price %>円</td>
-						<td>
-							<select name="cnt">
-								<option value="1" selected>1</option>　/*　←初期値は「selected」を入れておく　*/
-								<% for num in 2..99 do %>
-									<option value="<% num %>"><%=num%></option>
+						<tr>
+							
+							<!-- あくまで仮置きです。imgタグとかで再設定する必要あり -->
+							<td><%= attachment_image_tag cart.good, :jacket_image, format: "jpeg", fallback: "no_image.jpg", size: "100x100" %></td>
+							<td>
+								<!-- <p>商品名</p> -->
+								<!--<button type="button" class="btn btn-danger btn-sm">削除</button>-->
+								<%= link_to "削除", cart_path(cart.id),class: "btn btn-danger btn-sm", method: :delete %>
+							</td>
+							<td><%= cart.good.goods_title %></td>
+							<td><%= cart.good.price %>円</td>
+							<td>
+								<%= form_for cart, url:cart_path(cart.id) do |f| %>
+									<!-- <select name="cnt">
+										<option value="1" selected>1</option>　/*　←初期値は「selected」を入れておく　*/
+										<%# for num in 2..99 do %>
+											<option value="<%# num %>"><%#=num%></option>
+										<%# end %>
+									</select> -->
+									<%= f.number_field :cart_value %>
+									<a>個</a>
+									<%#= f.hidden_field :cart_value, :value => num %>
+									<%= f.submit "更新",class: "btn btn-info btn-sm" %>
 								<% end %>
-							</select>
-							<a>個</a>
-						</td>
+							</td>
+							
+						</tr>
 						<% end %>
-					</tr>
-					<tr>
-						<!-- あくまで仮置きです。imgタグとかで再設定する必要あり -->
-						<td>画像の置き場</td>
-						<td>
-							<p>商品名</p>
-							<button type="button" class="btn btn-danger btn-sm">削除</button>
-						</td>
-						<td>blue-cd</td>
-						<td>¥540円</td>
-						<td>
-							<select name="cnt">
-								<option value="1" selected>1</option>　<!-- ←初期値は「selected」を入れておく -->
-								<% for num in 2..99 do %>
-									<option value="<% num %>"><%=num%></option>
-								<% end %>
-							</select>
-							<a>個</a>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+						
+					</tbody>
+				</table>
+
+
+
 		</div>
 
 		<!-- カートの合計金額、購入ボタン部分 -->
@@ -77,8 +70,9 @@
 				</div>
 				<div class="card-body">
 					<p class="text-left">合計価格:</p>
-					<p class="text-right">¥300円</p>
-					<button type="button" class="btn btn-success btn-lg btn-block">購入</button>
+					<p class="text-right">¥<%= @price %>円</p>
+					<!-- <button type="button" class="btn btn-success btn-lg btn-block"> -->
+						<%= link_to "支払方法選択へ",orders_path,class: "btn btn-success btn-lg btn-block" %></button>
 				</div>
 			</div>
 		</div>

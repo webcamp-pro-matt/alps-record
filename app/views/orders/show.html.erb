@@ -23,44 +23,33 @@
 				</thead>
 
 				<tbody>
-					<tr>
-						<!-- あくまで仮置きです。imgタグとかで再設定する必要あり -->
-						<td>画像の置き場</td>
-						<td>
-							<p>商品名</p>
-							<button type="button" class="btn btn-danger btn-sm">削除</button>
-						</td>
-						<td>red-cd</td>
-						<td>¥108円</td>
-						<td>
-							<select name="cnt">
-								<option value="1" selected>1</option>　/*　←初期値は「selected」を入れておく　*/
-								<% for num in 2..99 do %>
-									<option value="<% num %>"><%=num%></option>
-								<% end %>
-							</select>
-							<a>個</a>
-						</td>
-					</tr>
-					<tr>
-						<!-- あくまで仮置きです。imgタグとかで再設定する必要あり -->
-						<td>画像の置き場</td>
-						<td>
-							<p>商品名</p>
-							<button type="button" class="btn btn-danger btn-sm">削除</button>
-						</td>
-						<td>blue-cd</td>
-						<td>¥540円</td>
-						<td>
-							<select name="cnt">
-								<option value="1" selected>1</option>　<!-- ←初期値は「selected」を入れておく -->
-								<% for num in 2..99 do %>
-									<option value="<% num %>"><%=num%></option>
-								<% end %>
-							</select>
-							<a>個</a>
-						</td>
-					</tr>
+					<% @carts.each do |cart| %>
+						<tr>
+							
+							<!-- あくまで仮置きです。imgタグとかで再設定する必要あり -->
+							<td><%= attachment_image_tag cart.good, :jacket_image, format: "jpeg", fallback: "no_image.jpg", size: "100x100" %></td>
+							<td>
+							</td>
+							<td><%= cart.good.goods_title %></td>
+							<td><%= cart.good.price %>円</td>
+							<td>
+								<%#= form_for cart, url:cart_path(cart.id) do |f| %>
+									<!-- <select name="cnt">
+										<option value="1" selected>1</option>　/*　←初期値は「selected」を入れておく　*/
+										<%# for num in 2..99 do %>
+											<option value="<%# num %>"><%#=num%></option>
+										<%# end %>
+									</select> -->
+									<%#= f.number_field :cart_value %>
+									<!-- <a>個</a> -->
+									<%#= f.hidden_field :cart_value, :value => num %>
+									<%#= f.submit "更新",class: "btn btn-info btn-sm" %>
+								<%# end %>
+								<%= cart.cart_value %>
+							</td>
+							
+						</tr>
+					<% end %>
 				</tbody>
 			</table>
 		</div>
@@ -75,14 +64,14 @@
 				</div>
 				<div class="card-body">
 					<p class="text-left">合計価格:</p>
-					<p class="text-right">¥3,000円</p>
+					<p class="text-right">¥<%= @price %>円</p>
 					<p class="text-left">送料:</p>
-					<p class="text-right">¥500円</p>
+					<p class="text-right">¥<%= @delivery_price %>円</p>
 					<p class="text-left">消費税:</p>
-					<p class="text-right">¥280円</p>
+					<p class="text-right">¥<%= @tax.to_i %>円</p>
 					<hr>
 					<p class="text-left">総計:</p>
-					<p class="text-right">¥3,780円</p>
+					<p class="text-right">¥<%= @total_price.to_i %>円</p>
 					<button type="button" class="btn btn-success btn-lg btn-block">購入</button>
 				</div>
 			</div>
