@@ -1,7 +1,7 @@
 class CartsController < ApplicationController
   def index
-  	@carts = Cart.where(user_id: current_user.id)
-  	@good = Good.all
+  	@user = current_user
+    @carts = @user.carts
   end
 
   def create
@@ -23,7 +23,7 @@ class CartsController < ApplicationController
 
   private
   def cart_params
-  	 params.require(:cart).permit(:id, :cart_value, :goods_id)
+  	 params.require(:cart).permit(:id, :cart_value, :good_id)
   end
 
 end

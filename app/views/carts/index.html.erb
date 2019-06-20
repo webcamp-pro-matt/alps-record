@@ -24,15 +24,15 @@
 
 				<tbody>
 					<tr>
-						<% @good.each do |good| %>
+						<% @carts.each do |cart| %>
 						<!-- あくまで仮置きです。imgタグとかで再設定する必要あり -->
-						<<td><%= attachment_image_tag good.carts, :jacket_image, format: "jpeg", fallback: "no_image.jpg", size: "100x100" %></td>
+						<td><%= attachment_image_tag cart.good, :jacket_image, format: "jpeg", fallback: "no_image.jpg", size: "100x100" %></td>
 						<td>
 							<p>商品名</p>
 							<button type="button" class="btn btn-danger btn-sm">削除</button>
 						</td>
-						<td>red-cd</td>
-						<td>¥108円</td>
+						<td><%= cart.good.goods_title %></td>
+						<td><%= cart.good.price %>円</td>
 						<td>
 							<select name="cnt">
 								<option value="1" selected>1</option>　/*　←初期値は「selected」を入れておく　*/
