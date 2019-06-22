@@ -3,8 +3,11 @@
   	<div class="copy-container">
   		<br>
   		<button type="button" class="btn btn-primary btn-lg btn-block">マイページ</button>
-  		<h1 align="center">ようこそ！！<br>◯◯さん</h1>
-  		<button type="button" class="btn btn-primary btn-lg btn-block">登録情報の編集</button>
+  		<h1 align="center">ようこそ！！<br><%= @user.users_children[0].name_kanji_mei %>さん</h1>
+  		<!-- <button type="button" class="btn btn-primary btn-lg btn-block">登録情報の編集</button> -->
+      <button type="button" class="btn btn-default btn-block">
+    <%= link_to "編集", edit_user_path(current_user) %>
+  </button>
   	</div>
 
 
@@ -21,28 +24,25 @@
   		<tbody>
   			<tr align="center">
   				<td>名前</td>
-  				<td>見本太郎</td>
+  				<td><%= @user.users_children[0].name_kanji_sei + " " +  @user.users_children[0].name_kanji_mei %></td>
   			</tr>
   			<tr align="center">
   				<td>名前（カナ）</td>
-  				<td>ミホン　タロウ</td>
+  				<td><%= @user.users_children[0].name_kana_sei + " " + @user.users_children[0].name_kana_mei %></td>
   			</tr>
   			<tr align="center">
   				<td>郵便番号</td>
-  				<td>〒999-9999</td>
+  				<td>〒<%= @user.users_children[0].post_code.chars[0] + @user.users_children[0].post_code.chars[1] + @user.users_children[0].post_code.chars[2] + "-" + @user.users_children[0].post_code.chars[3] + @user.users_children[0].post_code.chars[4] + @user.users_children[0].post_code.chars[5] + @user.users_children[0].post_code.chars[6] %></td>
   			</tr>
   			<tr align="center">
   				<td>住所</td>
-  				<td>東京都東京区東京1-1-1</td>
+  				<td><%= @user.users_children[0].address %></td>
   			</tr>
   			<tr align="center">
   				<td>メールアドレス</td>
-  				<td>mihon@gmail.com</td>
+  				<td><%= @user.email %></td>
   			</tr>
-  			<tr align="center">
-  				<td>パスワード</td>
-  				<td>❇︎❇︎❇︎❇︎</td>
-  			</tr>
+  			
   		</tbody>
   	</table>
   </div>
