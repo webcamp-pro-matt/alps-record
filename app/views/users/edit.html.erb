@@ -1,6 +1,11 @@
 <div class="container">
   <%= flash[:notice] %>
   <h1>アカウント情報</h1>
+    <%= form_for @user do |f| %>
+  
+
+  <%= f.fields_for :users_children do |child| %>
+
   <div class="row">
   	<table class="table table-bordered">
       <thead>
@@ -9,28 +14,41 @@
       </thead>
       <tbody style="text-align: center;">
       	<tr>
-      	  <td>名前</td>
-      	  <td>見本太郎</td>
+      	  <td>名前(性)</td>
+      	  <td>
+            <%= child.text_field :name_kanji_sei, autofocus: true, autocomplete: "name_kanji_sei" %>
+          </td>
       	</tr>
+        <tr>
+          <td>名前(名)</td>
+          <td>
+            <%= child.text_field :name_kanji_mei, autofocus: true, autocomplete: "name_kanji_mei" %>
+          </td>
+        </tr>
       	<tr>
-      	  <td>名前(カナ)</td>
-      	  <td>ミホンタロウ</td>
+      	  <td>名前(カナ性)</td>
+      	   <td><%= child.text_field :name_kana_sei, autofocus: true, autocomplete: "name_kana_sei" %></td>
       	</tr>
+        <tr>
+          <td>名前(カナ名)</td>
+           <td><%= child.text_field :name_kana_mei, autofocus: true, autocomplete: "name_kana_mei" %></td>
+        </tr>
       	<tr>
       	  <td>郵便番号</td>
-      	  <td>〒999-9999</td>
+      	  <td><%= child.text_field :post_code, autofocus: true, autocomplete: "郵便番号" %></td>
       	</tr>
       	<tr>
       	  <td>住所</td>
-      	  <td>東京都見本区見本マンション101</td>
+      	  <td><%= child.text_field :address, autofocus: true, autocomplete: "住所" %></td>
       	</tr>
+        <% end %>
       	<tr>
       	  <td>メールアドレス</td>
-      	  <td>mihon@gmail.com</td>
+      	  <td><%= f.email_field :email, autofocus: true, autocomplete: "メールアドレス" %></td>
       	</tr>
       	<tr>
       	  <td>パスワード</td>
-      	  <td>＊＊＊＊＊＊＊</td>
+      	  <td><%= f.password_field :password, autofocus: true, autocomplete: "パスワード" %></td>
       	</tr>
       </tbody>
   	</table>
@@ -38,7 +56,7 @@
   <div class="row">
   	<div class="d-flex justify-content-start">
       <div class="mb-2">
-      <%= link_to "更新", user_path, class:"btn btn-success" %>
+      <%= f.submit "更新", class:"btn btn-success" %>
       </div>
     </div>
   </div>
@@ -47,7 +65,10 @@
      <div class="mb-2">
      <%= link_to "マイページ", user_path, class:"btn btn-success" %>
      </div>
+     <% end %>
 
      </div>
   </div>
 </div>
+
+

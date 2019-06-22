@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+
+  before_action :admin_flag_check?, only: [:admin_update, :admin_edit]
   def index
     @order = Order.new
     @user = current_user

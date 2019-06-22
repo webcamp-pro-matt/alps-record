@@ -2,6 +2,18 @@ class ApplicationController < ActionController::Base
 
 	before_action :configure_permitted_parameters, if: :devise_controller?
 
+	def admin_flag_check?
+		if current_user == nil
+			redirect_to "/"
+		else
+			if current_user.admin_flag == 1
+
+			else
+				redirect_to "/"
+			end
+		end
+	end
+
 
     #デバイスでeメール　パスワード以外を許可する
 	protected

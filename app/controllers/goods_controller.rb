@@ -1,4 +1,7 @@
 class GoodsController < ApplicationController
+
+  before_action :admin_flag_check?, only: [:admin_index, :admin_show, :admin_new, :admin_create, :admin_destroy, :admin_update, :admin_edit]
+
   def index
     @goods = Good.all
   end
