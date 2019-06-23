@@ -1,6 +1,11 @@
 class Order < ApplicationRecord
 
-	belongs_to :user
+	# rails5から、requiredオプションが標準でtrueになります。
+	# なので、標準では関連先のオブジェクトを検査しにいきます。
+	# Createメゾット内に@userモデルが存在しないので、エラーになります。
+	# 以下のオプションを
+	# oprional:true 関連先のオブジェクトが存在するかを検証しない
+	belongs_to :user, optional: true
 	has_many :orders_children
 
 	#親から子のモデルをいじるとき作成する
