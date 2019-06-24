@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   get "admin/goods/" => "goods#admin_index"
   get "admin/goods/new" => "goods#admin_new"
-  get "search" => "goods#search"
+  post "search" => "goods#search"
   get "admin/goods/:id" => "goods#admin_show", as: "show_admin_good"
   get "admin/goods/:id/edit" => "goods#admin_edit", as: "edit_admin_good"
   post "admin/goods/" => "goods#admin_create", as: "create_admin_good"
