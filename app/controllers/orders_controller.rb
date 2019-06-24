@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
       redirect_to order_path(@order.id)
     end
     #binding.pry
-    
+
   end
 
   def show
@@ -62,15 +62,19 @@ class OrdersController < ApplicationController
   end
 
   def admin_edit
+    @order = Order.find(params[:id])
   end
 
   def admin_update
+    @order = Order.find(params[:id])
+    @order.update(order_params)
+    redirect_to admin_users_path
   end
 
   private
 
   def order_params
-     params.require(:order).permit(:id, :other_address, :payment_method, :other_name, :other_kana, :other_post_code, :delivery_select_flag, users_child_attributes: [:post_code, :address])
+     params.require(:order).permit(:id, :delivery_status, :other_address, :payment_method, :other_name, :other_kana, :other_post_code, :delivery_select_flag, users_child_attributes: [:post_code, :address])
   end
 
 end

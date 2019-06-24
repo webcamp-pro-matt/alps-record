@@ -4,9 +4,15 @@ class GoodsController < ApplicationController
 
   def index
     @goods = Good.all
+    @good = Good.new
+
   end
 
   def search
+    @search = Good.new(search_params)
+    @goods = Good.where(goods_title: @search.goods_title)
+    @good = Good.new
+    render "index"
   end
 
   def show
@@ -22,6 +28,12 @@ class GoodsController < ApplicationController
   def admin_show
     @good = Good.find(params[:id])
     @music_titles = MusicTitle.where(good_id: @good.id)
+
+    if @good.goods_status == 0
+      @status = "販売中"
+    else
+      @status = "販売停止中"
+    end
   end
 
   def admin_new
@@ -64,6 +76,10 @@ class GoodsController < ApplicationController
     # モデルの複数形_attributes
     params.require(:good).permit(:id, :artist, :goods_title , :jacket_image, :price, :rabel, :stock, music_titles_attributes:[:id, :song])
     #params.require(:music_title).permit(:song)
+  end
+
+  def search_params
+    params.require(:good).permit(:goods_title)
   end
 
 

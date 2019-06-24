@@ -20,7 +20,7 @@
 			
 			<% @goods.each do |good| %>
 			<tbody>
-				<td><%= attachment_image_tag good, :jacket_image, format: "jpeg", fallback: "no_image.jpg", size: "100x100" %></td>
+				<td><a href="<%= "/admin/goods/#{good.id}" %>"><%= attachment_image_tag good, :jacket_image, format: "jpeg", fallback: "no_image.jpg", size: "100x100" %></a></td>
 				<td><%= good.artist %></td>
 				<td><%= good.goods_title %></td>
 			</tbody>
