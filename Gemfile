@@ -80,6 +80,8 @@ gem 'kaminari','~> 1.1.1'
 
 gem 'ransack'
 
+gem 'nested_form_fields'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'

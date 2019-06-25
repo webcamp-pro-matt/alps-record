@@ -4,5 +4,6 @@ class Good < ApplicationRecord
 	attachment :jacket_image
 	has_many :orders_children
 
-	accepts_nested_attributes_for :music_titles, :carts, :orders_children
+	accepts_nested_attributes_for :music_titles, allow_destroy: true
+	accepts_nested_attributes_for :carts, :orders_children
 end

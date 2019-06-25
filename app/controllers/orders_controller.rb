@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @order.users_id = current_user.id
+    @order.user_id = current_user.id
 
     if @order.delivery_select_flag == 0
       @order.save
@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
   def show
     @user = current_user
     @carts = @user.carts
-    @orders = Order.find_by(users_id: @user.id)
+    @orders = Order.find_by(user_id: @user.id)
     @delivery_price = DeliveryPrice.find(1).delivery_price
     # 小計金額の定義
     @price = 0
@@ -56,6 +56,12 @@ class OrdersController < ApplicationController
   end
 
   def destroy
+    @order = Order.find(params[:id])
+   
+    @carts = Cart.where(user_id: current_user.id)
+    @carts.destroy_all
+    @order.destroy
+    redirect_to goods_path
   end
 
   def new

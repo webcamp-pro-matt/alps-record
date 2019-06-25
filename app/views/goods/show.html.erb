@@ -55,7 +55,7 @@
 			<p>CD: 1枚目</p>
 			<% @music_titles.each do |title| %>
 			<!-- cssに書いた方がいいかも -->
-			<p  style="line-height: 6px"><%= title.song %></p>
+			<p  style="line-height: 6px"><%= title.song_number.to_s + "曲目:  " + title.song %></p>
 			<!--<p  style="line-height: 6px">2.bbbb</p>
 			<p  style="line-height: 6px">3.cccc</p>
 			<p  style="line-height: 6px">4.dddd</p> -->

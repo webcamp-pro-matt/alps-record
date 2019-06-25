@@ -89,7 +89,8 @@
 	</div>
 	<br>
 	<div class="d-flex justify-content-end">
-		<button type="button" class="btn btn-warning btn-sm">購入キャンセル</button>
+		<!--<button type="button" class="btn btn-warning btn-sm">購入キャンセル</button> -->
+		<%= link_to "購入キャンセル", order_path(@orders.id), method: :delete, class:"btn btn-warning",data: {confirm:"カートの中身を消します。本当にいいの？"} %>
 		<!-- ボタンとボタンのマージン用。消さないで -->
 		<a>　</a>
 		<button type="button" class="btn btn-info btn-sm">前の画面に戻る</button>
