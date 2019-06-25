@@ -43,6 +43,14 @@ class GoodsController < ApplicationController
 
   def admin_create
     @good = Good.new(good_params)
+
+    # 曲順を入れる処理
+    song_number = 1
+    @good.music_titles.each do |music|
+      music.song_number = song_number
+      song_number = song_number + 1
+    end
+
     @good.save
     # 商品一覧ページにて戻す
     redirect_to admin_goods_path
@@ -74,7 +82,7 @@ class GoodsController < ApplicationController
   private
   def good_params
     # モデルの複数形_attributes
-    params.require(:good).permit(:id, :artist, :goods_title , :jacket_image, :price, :rabel, :stock, music_titles_attributes:[:id, :song])
+    params.require(:good).permit(:id, :artist, :goods_title , :jacket_image, :price, :rabel, :stock, music_titles_attributes:[:id, :song, :_destroy])
     #params.require(:music_title).permit(:song)
   end
 

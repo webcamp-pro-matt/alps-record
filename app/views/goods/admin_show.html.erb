@@ -51,7 +51,7 @@
 			<!-- cssに書いた方がいいかも -->
 			<% @music_titles.each do |title| %>
 				<!-- 後でなおしましょう -->
-				<p  style="line-height: 6px"><%= "1曲目:　" + title.song %></p>
+				<p  style="line-height: 6px"><%= title.song_number.to_s + "曲目:　" + title.song %></p>
 				<!--
 				<p  style="line-height: 6px">1.aaaa</p>
 				<p  style="line-height: 6px">2.bbbb</p>
