@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   before_action :admin_flag_check?, only: [:admin, :admin_index, :admin_show, :admin_destroy, :admin_update, :admin_edit]
+  before_action :resignation_flag_check?
 
   def show
     @user = current_user
@@ -56,7 +57,9 @@ class UsersController < ApplicationController
   end
 
   def admin_show
+    @user = User.find(params[:id])
     @child = UsersChild.find_by(user_id: params[:id])
+    @orders = Order.where(user_id: @user.id)
   end
 
   def admin_destroy

@@ -1,4 +1,7 @@
 class CartsController < ApplicationController
+
+  before_action :resignation_flag_check?
+
   def index
   	@user = current_user
     @carts = @user.carts
