@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
 
+  before_action :resignation_flag_check?
+
   before_action :admin_flag_check?, only: [:admin_update, :admin_edit]
   def index
     @order = Order.new

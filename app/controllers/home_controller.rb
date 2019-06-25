@@ -1,4 +1,7 @@
 class HomeController < ApplicationController
+
+  before_action :resignation_flag_check?, only:[:done]
+
   def top
   end
 

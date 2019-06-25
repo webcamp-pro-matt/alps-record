@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   
   get "admin/users" => "users#admin"
   get "admin/" => "users#admin_index"
-  get "admin/users/:id" => "users#admin_show"
+  get "admin/users/:id" => "users#admin_show", as: "show_admin_user"
   delete "admin/users/:id" => "users#admin_destroy", as: "destroy_admin_user"
   get "admin/users/:id/edit" => "users#admin_edit", as: "edit_admin_user"
   # put "admin/users/:id" => "users#admin_update", as: "update_admin_user"
@@ -71,13 +71,13 @@ Prefix Verb   URI Pattern                                                       
                 home_done GET    /home/done(.:format)                                                                     home#done
               admin_users GET    /admin/users(.:format)                                                                   users#admin
                     admin GET    /admin(.:format)                                                                         users#admin_index
-                          GET    /admin/show/:id(.:format)                                                                users#admin_show
+          show_admin_user GET    /admin/users/:id(.:format)                                                               users#admin_show
        destroy_admin_user DELETE /admin/users/:id(.:format)                                                               users#admin_destroy
           edit_admin_user GET    /admin/users/:id/edit(.:format)                                                          users#admin_edit
         update_admin_user PATCH  /admin/users/:id(.:format)                                                               users#admin_update
               admin_goods GET    /admin/goods(.:format)                                                                   goods#admin_index
           admin_goods_new GET    /admin/goods/new(.:format)                                                               goods#admin_new
-                   search GET    /search(.:format)                                                                        goods#search
+                   search POST   /search(.:format)                                                                        goods#search
           show_admin_good GET    /admin/goods/:id(.:format)                                                               goods#admin_show
           edit_admin_good GET    /admin/goods/:id/edit(.:format)                                                          goods#admin_edit
         create_admin_good POST   /admin/goods(.:format)                                                                   goods#admin_create

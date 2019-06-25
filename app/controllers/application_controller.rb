@@ -14,6 +14,23 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
+	# 退会状態のユーザーについて、アクセス制限をかける
+	def resignation_flag_check?
+		# ログインしているかで処理を分ける
+		if current_user == nil
+			# 処理しません
+		else
+			# 退会状態でアクセスされた場合、トップページにリダイレクトする。
+			if current_user.resignation_flag == 1
+				redirect_to "/"
+			# 退会していない状態では、何もしません。
+			else
+				#処理しません
+			end
+
+		end
+	end
+
 
     #デバイスでeメール　パスワード以外を許可する
 	protected
