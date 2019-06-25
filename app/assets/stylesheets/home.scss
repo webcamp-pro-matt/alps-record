@@ -46,14 +46,16 @@
   padding-top: 30px;
 }
 
-.top-text {
+.text-top {
   text-align: center;
   word-break: keep-all;
   font-family: 'Sacramento', cursive;
   padding: 50px 100px;
   font-size: 22px;
   line-height: 50px;
+  display: none;
 }
+
 
 .btn-circle-fishy {
   display: inline-block;
