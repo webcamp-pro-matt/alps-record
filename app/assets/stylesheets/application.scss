@@ -14,3 +14,75 @@
  *= require_self
  */
  @import "bootstrap";
+
+.type-textbound {
+  font-size: 60px;
+  text-align: center;
+}
+
+.anime_test {
+    width: 300px;                   /* 幅指定 */
+    text-align:  center;            /* 文字中央揃え */
+    display: block;                 /* ブロック要素にする */
+    padding:  15px;                 /* 余白指定 */
+    font-size:  20px;               /* 文字サイズ指定 */
+    text-decoration: none;          /* デフォルトCSS打ち消し */
+    color:  #fff;                   /* 文字色指定 */
+    background-color: #00BCD4;      /* 背景色指定 */
+    border-radius:  5px;            /* 角丸指定 */
+    transition: 0.5s;               /* アニメーション指定 */
+    margin:  0 auto;                /* 要素中央揃え */
+}
+.anime_test:hover {
+    opacity:  0.7;                  /* 透明度指定 */
+    width: 340px;                   /* 幅指定 */
+}
+
+.anime {
+    display:  block;                /* ブロック要素にする */
+    margin: 0 auto;                 /* 要素中央揃え */
+    position:  relative;            /* 位置指定 */
+    animation: anime1 1s ease;      /* アニメーション指定 */
+}
+ 
+@keyframes anime1 {
+    0% {
+        opacity:  0;                /* 透明度指定 */
+        top: 50px;                  /* 位置指定 */
+    }
+    100% {
+        opacity:  1;                /* 透明度指定 */
+        top: 0;                     /* 位置指定 */
+    }
+}
+
+
+.anime_1 {
+    height:  200px;                         /* 高さ指定 */
+    width:  200px;                          /* 幅指定 */
+    border-radius:  50%;                    /* 角丸指定 */
+    background: linear-gradient(-90deg, #FF00A1, #F6FF00);  /* グラデーション指定 */
+    animation: anime 2s linear infinite;    /* アニメーション指定 */
+    position: relative;                     /* 位置指定 */
+}
+ 
+@keyframes anime {
+    0% {
+        transform: rotate(0deg);    /* 角度指定 */
+    }
+    100% {
+        transform: rotate(360deg);  /* 角度指定 */
+    }
+}
+ 
+.anime_1:before {
+    content: "";      /* 空の要素を作る */
+    height:  180px;             /* 高さ指定 */
+    width:  180px;              /* 幅指定 */
+    display:  block;            /* ブロック要素にする */
+    background-color:  #fff;    /* 背景色指定 */
+    border-radius: 50%;         /* 角丸指定 */
+    margin: 0px auto;           /* 中央揃え */
+    position:  relative;        /* 位置指定 */
+    top: 10px;                  /* 位置指定 */
+}
