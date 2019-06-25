@@ -4,8 +4,8 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    @orders = Order.where(users_id: @user.id)
-    orders = Order.find_by(users_id: @user.id)
+    @orders = Order.where(user_id: @user.id)
+    orders = Order.find_by(user_id: @user.id)
 
     if orders.delivery_select_flag == 0
       @post_code = @orders.other_post_code
@@ -25,6 +25,10 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user = User.find(params[:id])
+    @user.resignation_flag = 1
+    @user.save
+    redirect_to "/"
   end
 
   def update

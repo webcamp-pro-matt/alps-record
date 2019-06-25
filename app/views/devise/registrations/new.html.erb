@@ -1,70 +1,123 @@
-<h2>Sign up</h2>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="d-flex justify-content-center">
+          <div class="rounded">
+            <div class="form-header text-center">
+              <h2 class="form-header-title">新規登録</h2>
+            </div>
+              <div class="form-body">
+                <div class="card"  style= "width: 100%;">
+                  
+                <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                  <%= render "devise/shared/error_messages", resource: resource %>
+                  <table class="table table-hover table-striped">
+                  <colgroup span="1" width="40%"></colgroup>
+                  <colgroup span="1" width="60%"></colgroup>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+                    <thead></thead>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                    <tbody>
+
+                        <!-- 子供をカスタマイズ -->
+                      <%= f.fields_for :users_children do |child| %>
+
+                        <tr align="center">
+                        <!-- 姓 -->
+                          <div class="field">
+                            <td><%= child.label :名前（性） %><br /></td>
+                            <td><%= child.text_field :name_kanji_sei, autofocus: true, autocomplete: "name_kanji_sei", :size => "25*25" %></td>
+                          </div>
+                        </tr>
+
+                        <tr align="center">
+                          <!-- 名 -->
+                          <div class="field">
+                            <td><%= child.label :名前（名） %><br /></td>
+                            <td><%= child.text_field :name_kanji_mei, autofocus: true, autocomplete: "name_kanji_mei", :size => "25*25" %></td>
+                          </div>
+                        </tr>
+
+                        <tr align="center">
+                  <!-- セイ -->
+                          <div class="field">
+                            <td><%= child.label :名前（カナ性） %><br /></td>
+                            <td><%= child.text_field :name_kana_sei, autofocus: true, autocomplete: "name_kana_sei", :size => "25*25" %></td>
+                          </div>
+                        </tr>
+
+                        <tr align="center">
+                      　<!-- メイ -->
+                          <div class="field">
+                            <td><%= child.label :名前（カナ名） %><br /></td>
+                            <td><%= child.text_field :name_kana_mei, autofocus: true, autocomplete: "name_kana_mei", :size => "25*25" %></td>
+                          </div>
+                        </tr>
+
+                        <!-- 郵便番号 -->
+                        <tr align="center">
+                          <div class="field">
+                            <td><%= child.label :郵便番号 %><br /></td>
+                            <td><%= child.text_field :post_code, autofocus: true, autocomplete: "post_code", :size => "25*25" %></td>
+                          </div>
+                        </tr>
+
+                        <tr align="center">
+                        <!-- 住所 -->
+                          <div class="field">
+                            <td><%= child.label :住所 %><br /></td>
+                            <td><%= child.text_field :address, autofocus: true, autocomplete: "address", :size => "25*25" %></td>
+                          </div>
+                        </tr>
+                      <% end %>
+
+                      <tr align="center">
+                        <!-- カスタマイズ -->
+                        <div class="field">
+                          <td><%= f.label :電話番号 %><br /></td>
+                          <td><%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", :size => "25*25" %></td>
+                        </div>
+                      </tr>
+
+                      <tr align="center">
+
+                        <div class="field">
+                          <td><%= f.label :メールアドレス %><br /></td>
+                          <td><%= f.email_field :email, autofocus: true, autocomplete: "email", :size => "25*25" %></td>
+                        </div>
+                      </tr>
+
+                      <tr align="center">
+
+                        <div class="field">
+                          <td><%= f.label :パスワード %></td>
+                          <% if @minimum_password_length %>
+                          <% end %><br />
+                          <td><%= f.password_field :password, autocomplete: "new-password", :size => "25*25" %></td>
+                        </div>
+                      </tr>
+
+                      <tr align="center">
+
+                        <div class="field">
+                          <td><%= f.label :パスワード確認 %><br /></td>
+                          <td><%= f.password_field :password_confirmation, autocomplete: "new-password", :size => "25*25" %></td>
+                        </div>
+                      </tr>
+                </tbody>
+              </table>
+                <div class="actions">
+                  <%= f.submit "登録", class: "btn btn-success btn-block" %>
+                </div>
+                <% end %>
+              </div>
+
+
+                <%= render "devise/shared/links" %>
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <!-- カスタマイズ -->
-  <div class="field">
-    <%= f.label :phone_number %><br />
-    <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
-  </div>
-
-  <!-- 子供をカスタマイズ -->
-  <%= f.fields_for :users_children do |child| %>
-  <!-- 郵便番号 -->
-    <div class="field">
-    <%= child.label :post_code %><br />
-    <%= child.text_field :post_code, autofocus: true, autocomplete: "post_code" %>
-    </div>
-  <!-- 姓 -->
-    <div class="field">
-    <%= child.label :name_kanji_sei %><br />
-    <%= child.text_field :name_kanji_sei, autofocus: true, autocomplete: "name_kanji_sei" %>
-    </div>
-  <!-- 名 -->
-    <div class="field">
-    <%= child.label :name_kanji_mei %><br />
-    <%= child.text_field :name_kanji_mei, autofocus: true, autocomplete: "name_kanji_mei" %>
-    </div>
-  <!-- セイ -->
-    <div class="field">
-    <%= child.label :name_kana_sei %><br />
-    <%= child.text_field :name_kana_sei, autofocus: true, autocomplete: "name_kana_sei" %>
-    </div>
-　<!-- メイ -->
-    <div class="field">
-    <%= child.label :name_kana_mei %><br />
-    <%= child.text_field :name_kana_mei, autofocus: true, autocomplete: "name_kana_mei" %>
-    </div>
-  <!-- 住所 -->
-    <div class="field">
-    <%= child.label :address %><br />
-    <%= child.text_field :address, autofocus: true, autocomplete: "address" %>
-    </div>
-  <% end %>
-
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</section>
