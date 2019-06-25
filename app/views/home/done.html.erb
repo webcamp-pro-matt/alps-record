@@ -2,11 +2,15 @@
 	<h1><strong>ご購入、</br>ありがとうございます！！</strong></h1>
 </div>
 <div class="" style="text-align: center; margin: 100px 30px 0 30px;">
-<button type="button" class="btn btn-warning mx-auto">
- 	<%#<%= link_to "商品一覧", %>商品一覧
-</button></div>
+<!-- <button type="button" class="btn btn-warning mx-auto"> -->
+ 	<%#<%= link_to "商品一覧", %>
+ 	<%= link_to "商品一覧", goods_path, class: "btn btn-warning mx-auto" %>
+<!-- </button> -->
+</div>
 
 <div class="" style="text-align: center; margin: 20px 30px 0 30px;">
-<button type="button" class="btn btn-info mx-auto">
- 	<%#<%= link_to "マイページ", %>マイページ
-</button></div>
+<!-- <button type="button" class="btn btn-info mx-auto"> -->
+ 	<%#<%= link_to "マイページ", %>
+ 	<%= link_to "マイページ", user_path(current_user.id), class: "btn btn-info mx-auto" %>
+<!-- </button> -->
+</div>

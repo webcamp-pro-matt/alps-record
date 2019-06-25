@@ -1,6 +1,22 @@
 
-<h1>Home#index</h1>
+
 <div class = "container">
+  <!-- 退会している人に対してメッセージを出す -->
+  <% if current_user == nil %>
+    <!-- 処理をしません -->
+
+  <!-- ログインしている場合 -->
+  <% else %>
+    <!-- 退会している場合 -->
+    <% if current_user.resignation_flag == 1 %>
+      <h2>このユーザーは退会されています。新規にユーザーを作成してください。</h2>
+    <!-- 退会していない場合 -->
+    <% else %>
+      <!-- 処理をしません -->
+    <% end %>
+  <% end %>
+
+
   <div class="top-box" style="border:solid 1px; border-radius: 7px;">
     <h1 style="text-align: center;">アルプスレコード</h1>
     <p style="text-align: center;">
