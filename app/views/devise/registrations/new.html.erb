@@ -4,9 +4,12 @@
         <div class="d-flex justify-content-center">
           <div class="rounded">
             <div class="form-header text-center">
-              <h2 class="form-header-title">新規登録</h2>
+              <div class="type-textbound">
+                <span class="anime">新規登録</span>
+              </div>
             </div>
               <div class="form-body">
+                <div class="anime">
                 <div class="card"  style= "width: 100%;">
                   
                 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -107,14 +110,15 @@
                 </tbody>
               </table>
                 <div class="actions">
-                  <%= f.submit "登録", class: "btn btn-success btn-block" %>
+                  <%= f.submit "登録", class: "anime_test btn btn-success btn-block" %>
                 </div>
                 <% end %>
+              </div>
               </div>
 
 
                 <%= render "devise/shared/links" %>
-                </div>
+              </div>
           </div>
         </div>
       </div>
