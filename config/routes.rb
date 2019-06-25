@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   
   get "admin/users" => "users#admin"
   get "admin/" => "users#admin_index"
-  get "admin/show/:id" => "users#admin_show"
+  get "admin/users/:id" => "users#admin_show"
   delete "admin/users/:id" => "users#admin_destroy", as: "destroy_admin_user"
   get "admin/users/:id/edit" => "users#admin_edit", as: "edit_admin_user"
   # put "admin/users/:id" => "users#admin_update", as: "update_admin_user"
