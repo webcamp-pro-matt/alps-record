@@ -86,3 +86,9 @@
     position:  relative;        /* 位置指定 */
     top: 10px;                  /* 位置指定 */
 }
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
