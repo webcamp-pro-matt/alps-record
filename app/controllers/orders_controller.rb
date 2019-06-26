@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
 
     if @order.delivery_select_flag == 0
       @order.save
-      redirect_to order_path(@order.users_id)
+      redirect_to order_path(@order.user_id)
     else
 
       @order.save
