@@ -93,6 +93,7 @@
 		<%= link_to "購入キャンセル", order_path(@orders.id), method: :delete, class:"btn btn-warning",data: {confirm:"カートの中身を消します。本当にいいの？"} %>
 		<!-- ボタンとボタンのマージン用。消さないで -->
 		<a>　</a>
-		<button type="button" class="btn btn-info btn-sm">前の画面に戻る</button>
+		<!-- <button type="button" class="btn btn-info btn-sm">前の画面に戻る</button> -->
+		<%= link_to "前の画面に戻る", orders_path, class: "btn btn-info btn-sm" %>
 	</div>
 </div>

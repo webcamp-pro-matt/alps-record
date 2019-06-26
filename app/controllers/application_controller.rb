@@ -2,6 +2,18 @@ class ApplicationController < ActionController::Base
 
 	before_action :configure_permitted_parameters, if: :devise_controller?
 
+	def after_sign_in_path_for(resourse)
+		if cuurent_user.admin_flag == 1
+		   admin_users_path
+		else
+		   goods_path
+        end
+    end
+
+    def after_sign_up_path_for(resourse)
+    	goods_path
+    end
+
 	def admin_flag_check?
 		if current_user == nil
 			redirect_to "/"
@@ -36,5 +48,6 @@ class ApplicationController < ActionController::Base
 	protected
 	def configure_permitted_parameters
 		devise_parameter_sanitizer.permit(:sign_up,keys:[:phone_number,users_children_attributes:[:post_code, :name_kanji_sei, :name_kanji_mei, :name_kana_sei, :name_kana_mei, :address] ])
+		devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
 	end
 end
