@@ -6,31 +6,40 @@
 	<div class="row">
 		<div class="col-md-12">
 			<table class="table">
-			<thead>
-				<colgroup span="1" style="width:10%;">
-				<colgroup span="2" style="width:20%;">
+				<thead>
+					<colgroup span="1" style="width:10%;">
+					<colgroup span="2" style="width:20%;">
 
-			<div class="row">
-					<th></th>
-					<th>アーティスト名</th>
-					<th>シングル/アルバム名</th>
-			</div>
+				<div class="row">
+						<th></th>
+						<th>アーティスト名</th>
+						<th>シングル/アルバム名</th>
+				</div>
+					
+				</thead>
 				
-			</thead>
-			
-			<% @goods.each do |good| %>
-			<tbody>
-				<td><a href="<%= "/admin/goods/#{good.id}" %>"><%= attachment_image_tag good, :jacket_image, format: "jpeg", fallback: "no_image.jpg", size: "100x100" %></a></td>
-				<td><%= good.artist %></td>
-				<td><%= good.goods_title %></td>
-			</tbody>
-			<% end %>
+				<tbody>
+				<% @goods.each do |good| %>
+				
+					<!-- goodテーブルにgood_delete_flagが立っていたら、表示しない -->
+					<% if good.good_delete_flag == 1 %>
+						<!-- 表示をしない -->
+					<% else %>
+						<tr>
+							<td><a href="<%= "/admin/goods/#{good.id}" %>"><%= attachment_image_tag good, :jacket_image, format: "jpeg", fallback: "no_image.jpg", size: "100x100" %></a></td>
+							<td><%= good.artist %></td>
+							<td><%= good.goods_title %></td>
+						</tr>
+					<% end %>
+					
+				<% end %>
+				</tbody>
 			</table>
 		</div>
 		
-		  <!--<button type="button" class="btn btn-primary mx-auto">-->
- 			<%= link_to "戻る", admin_users_path, class: "btn btn-primary mx-auto" %>
- 		  <!--</button>-->
+		<!--<button type="button" class="btn btn-primary mx-auto">-->
+ 		<%= link_to "戻る", admin_users_path, class: "btn btn-primary mx-auto" %>
+ 		<!--</button>-->
  		
 	</div>
 </div>

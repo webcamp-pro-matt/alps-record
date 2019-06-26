@@ -59,7 +59,11 @@ class GoodsController < ApplicationController
 
   def admin_destroy
     @good = Good.find(params[:id])
-    @good.destroy
+    # グッズを単純に消すと、注文履歴との不整合が発生するので、
+    # グッズ削除フラグを立てて、各ビューで表示しないように制御する。
+    # good.destroy
+    @good.good_delete_flag = 1
+    @good.save
     redirect_to admin_goods_path
   end
 
