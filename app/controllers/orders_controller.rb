@@ -55,9 +55,9 @@ class OrdersController < ApplicationController
     delivery_price_all.each do |delivery_price|
 
       # 現在時刻が、送料適用開始日を過ぎているか
-      if time_now_tokyo > delivery_price.delivery_start_day
+      if time_now_tokyo > delivery_price.delivery_start_day.in_time_zone('Tokyo')
         # 現在時刻が、送料適用終了日を過ぎていないか
-        if time_now_tokyo < delivery_price.delivery_finish_day
+        if time_now_tokyo < delivery_price.delivery_finish_day.in_time_zone('Tokyo')
           target_delivery_price = delivery_price.delivery_price
         else
           # 処理しません
@@ -72,6 +72,35 @@ class OrdersController < ApplicationController
     # 現在時刻の取得ロジック 終わり
     #
 
+    # 
+    # 消費税の取得ロジック 始まり
+    #
+
+    # 消費税テーブルを一旦全部持ってくる
+    tax_all = Tax.all
+
+    # # 送料テーブルをeach文で回す
+    target_tax = 0
+
+    tax_all.each do |tax|
+
+      # 現在時刻が、消費税適用開始日を過ぎているか
+      if time_now_tokyo > tax.tax_start_day.in_time_zone('Tokyo')
+        # 現在時刻が、送料適用終了日を過ぎていないか
+        if time_now_tokyo < tax.tax_finish_day.in_time_zone('Tokyo')
+          target_tax = tax.tax
+        else
+          # 処理しません
+        end
+      else
+        # 処理しません
+      end
+
+    end
+    #
+    # 消費税の取得ロジック 終わり
+    #
+
 
 
     # 小計金額の定義
@@ -81,7 +110,7 @@ class OrdersController < ApplicationController
     end
 
     # 消費税の定義
-    @tax = (@price + target_delivery_price) * Tax.find(1).tax - (@price + target_delivery_price)
+    @tax = (@price + target_delivery_price) * target_tax - (@price + target_delivery_price)
 
     # 総計金額の定義
     @total_price = @price + target_delivery_price + @tax
