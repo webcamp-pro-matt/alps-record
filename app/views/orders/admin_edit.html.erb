@@ -42,19 +42,21 @@
 		<!-- </div> -->
 	</div>
 	<div class="container" style="text-align: center;">
-		
+
+
 			<div class="" style="margin: 30px;">
 				<!-- form_forで送る？ -->
-				
+
 		 			<%= f.submit "更新" %>
-		 		 
+
 		 		 <% end %>
 	 		</div>
 	 		<div class="" style="margin: 50px;">
 		 		 <button type="button" class="btn btn-primary">
-		 			<%#<%= link_to "戻る", %>戻る
+		 			<%#<%= link_to "戻る", %>
+		 			<%= link_to "戻る", admin_users_path, class: "btn btn-primary" %>
 		 		 </button>
 	 		</div>
- 		
+
  	</div>
-</main>	
+</main>
