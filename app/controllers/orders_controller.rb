@@ -31,6 +31,49 @@ class OrdersController < ApplicationController
     @carts = @user.carts
     @orders = Order.find_by(user_id: @user.id)
     @delivery_price = DeliveryPrice.find(1).delivery_price
+
+
+
+    # 
+    # 現在時刻の取得ロジック 始まり
+    #
+
+    # 現在時刻の取得
+    time_now = DateTime.now
+    # 現在時刻を日本時刻に変換
+    time_now_tokyo = time_now.in_time_zone('Tokyo')
+    # 送料テーブルを一旦全部持ってくる
+    delivery_price_all = DeliveryPrice.all
+
+    # # 送料テーブルをeach文で回す
+    target_delivery_price = 0
+    # 下記メゾットを動かすためには、以下の手順を実装する。
+    # 1.delivery_start_day、delivery_finish_dayにとりあえず、created_atの値を代入
+    # 2.delivery_price.delivery_finish_day = delivery_price.delivery_finish_day + 100000000
+    #  とか書いてみる +10000000秒加算されるはず
+    # 3.saveする。
+    delivery_price_all.each do |delivery_price|
+
+      # 現在時刻が、送料適用開始日を過ぎているか
+      if time_now_tokyo > delivery_price.delivery_start_day
+        # 現在時刻が、送料適用終了日を過ぎていないか
+        if time_now_tokyo < delivery_price.delivery_finish_day
+          target_delivery_price = delivery_price.delivery_price
+        else
+          # 処理しません
+        end
+      else
+        # 処理しません
+      end
+
+    end
+    # binding.pry
+    #
+    # 現在時刻の取得ロジック 終わり
+    #
+
+
+
     # 小計金額の定義
     @price = 0
     @carts.each do |cart|
@@ -38,10 +81,10 @@ class OrdersController < ApplicationController
     end
 
     # 消費税の定義
-    @tax = (@price + @delivery_price) * Tax.find(1).tax - (@price + @delivery_price)
+    @tax = (@price + target_delivery_price) * Tax.find(1).tax - (@price + target_delivery_price)
 
     # 総計金額の定義
-    @total_price = @price + @delivery_price + @tax
+    @total_price = @price + target_delivery_price + @tax
     #binding.pry
 
     # delivery_select_flagの値により、表示する住所を変える

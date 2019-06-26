@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   #作ったコントローラを呼び出す
-  devise_for :users, controllers: { registrations: 'users/registrations'}
+  #devise_for :users, controllers: { registrations: 'users/registrations'}
+  devise_for :users, :controllers =>{ 
+       :registrations => 'users/registrations',
+       :sessions => 'users/sessions'
+  }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users, only: [:show, :edit, :destroy, :update]
   resources :goods, only: [:index, :show]
