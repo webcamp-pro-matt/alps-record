@@ -8,7 +8,7 @@
               <h2 class="form-header-title">ログイン</h2>
             </div>
               <div class="form-body">
-                <div class="card"  style= "width: 100%;">
+                <div class="card" style= "width: 100%;">
 
                     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                       <div class="field">
@@ -24,7 +24,7 @@
                       <tr align="center">
                         <div class="field">
                           <td><%= f.label :アドレス %><br /></td>
-                          <td><%= email_field :email, autofocus: true, autocomplete: "email" %></td>
+                          <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
                         </div>
                       </tr>
 

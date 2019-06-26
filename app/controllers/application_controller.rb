@@ -36,5 +36,6 @@ class ApplicationController < ActionController::Base
 	protected
 	def configure_permitted_parameters
 		devise_parameter_sanitizer.permit(:sign_up,keys:[:phone_number,users_children_attributes:[:post_code, :name_kanji_sei, :name_kanji_mei, :name_kana_sei, :name_kana_mei, :address] ])
+		devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
 	end
 end
