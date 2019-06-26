@@ -10,4 +10,10 @@ class Order < ApplicationRecord
 
 	#親から子のモデルをいじるとき作成する
   	accepts_nested_attributes_for :orders_children
+
+  	validates :payment_method, presence: true
+  	validates :delivery_select_flag, presence: true
+  	validates :other_name, presence: true
+  	validates :other_kana, presence: true
+  	validates :other_post_code, presence: true, format: { with: /\A[0-9]+\Z/ }
 end
