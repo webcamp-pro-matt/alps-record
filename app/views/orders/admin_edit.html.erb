@@ -46,16 +46,17 @@
 
 			<div class="" style="margin: 30px;">
 				<!-- form_forで送る？ -->
-
-		 			<%= f.submit "更新" %>
-
+				
+		 			<%= f.submit "更新", class: "btn btn-info" %>
+		 			<%#= link_to "更新", show_admin_user_path(@order.id), class: "btn btn-info" %>
+		 		 
 		 		 <% end %>
 	 		</div>
 	 		<div class="" style="margin: 50px;">
-		 		 <button type="button" class="btn btn-primary">
-		 			<%#<%= link_to "戻る", %>
-		 			<%= link_to "戻る", admin_users_path, class: "btn btn-primary" %>
-		 		 </button>
+		 		 <!-- <button type="button" class="btn btn-primary"> -->
+		 			<%#= link_to "戻る" %>
+		 			<%= link_to "戻る", show_admin_user_path(@order.user.id), class: "btn btn-primary" %>
+		 		 <!-- </button> -->
 	 		</div>
 
  	</div>
