@@ -93,10 +93,21 @@
   clear: both;
 }
 
+footer{
+	background-color: black;
+	color: white;
+	font-family: 'Yu Mincho';
+	padding: 10px 0 0 0;
+	margin-top: 10px;
+}
+
 .footer-text{
 	text-align: center;
 }
 
 .footer-title{
-	float: right;
+	text-align: right;
+	padding-right: 30px;
+	margin-bottom: 0;
+	
 }

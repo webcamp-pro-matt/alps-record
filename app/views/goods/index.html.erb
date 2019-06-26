@@ -1,4 +1,5 @@
 <%= flash[:notice] %>
+<div class="clearfix">
 <div class="container">
   <div class="row">
     <%= form_for @good, url: search_path do |f| %>
@@ -13,31 +14,29 @@
     <% end %>
   </div>
   <% @goods.each do |good| %>
-  <div class="clearfix">
-  <div class="card" style="float: left; margin: 30px;">
-  <table class= "table table-hover">
-    <thead></thead>
-    <tbody>
-        <tr>
-    	   <td><a href="<%= "/goods/#{good.id}" %>"><%= attachment_image_tag good, :jacket_image, format: "jpeg", fallback: "no_image.jpg", size: "200x200" %></a></td>
-        </tr>
-        <tr align="center">
-    	   <td><%= good.goods_title %></td>
-        </tr>
-        <tr align="center">
-          <td><%= good.artist %></td>
-        </tr>
-        <tr align="center">
-    		  <td><%= good.price %>円</td>
-        </tr>
-      <!-- 後で追加必要あり -->
-        <tr align="center">
-    		  <td>在庫あり</td>
-        </tr>
-      </tbody>
-    </table>
-      </div>
-      <% end %>
+    <div class="card" style= "margin: 20px; width: 21%; float: left;">
+      <table class= "table table-hover">
+        <thead></thead>
+        <tbody>
+          <tr align="center">
+      	   <td><a href="<%= "/goods/#{good.id}" %>"><%= attachment_image_tag good, :jacket_image, format: "jpeg", fallback: "no_image.jpg", size: "200x200" %></a></td>
+          </tr>
+          <tr align="center">
+      	   <td><%= good.goods_title.slice(0..23) %></td>
+          </tr>
+          <tr align="center">
+            <td><%= good.artist.slice(0..23) %></td>
+          </tr>
+          <tr align="center">
+      		  <td><%= good.price %>円</td>
+          </tr>
+        <!-- 後で追加必要あり -->
+          <tr align="center">
+      		  <td>在庫あり</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    </div>
-  
+  <% end %>
+</div>
+</div>
