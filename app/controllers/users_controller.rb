@@ -81,6 +81,10 @@ class UsersController < ApplicationController
   end
 
   def admin_destroy
+     @user = User.find(params[:id])
+     @user.resignation_flag = 1
+     @user.save
+     redirect_to admin_path
   end
 
   def admin_edit
