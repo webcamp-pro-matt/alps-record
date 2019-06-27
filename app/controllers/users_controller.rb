@@ -26,9 +26,12 @@ class UsersController < ApplicationController
       # viewで使う、購入履歴を表示するか判断するフラグを作成
       @buy_view_flg = 1
 
+      #binding.pry
+
     # ユーザーの購入履歴がないとき(nil)
     else
 
+      #binding.pry
       # viewで使う、購入履歴を表示するか判断するフラグを作成
       @buy_view_flg = 0
 

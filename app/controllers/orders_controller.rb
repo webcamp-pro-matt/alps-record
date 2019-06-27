@@ -4,9 +4,14 @@ class OrdersController < ApplicationController
 
   before_action :admin_flag_check?, only: [:admin_update, :admin_edit]
   def index
-    @order = Order.new
-    @user = current_user
-    @user_children = UsersChild.where(user_id: @user.id)
+    @cart = Cart.find_by(user_id: current_user.id)
+      if @cart == nil
+        redirect_to carts_path
+      else
+        @order = Order.new
+        @user = current_user
+        @user_children = UsersChild.where(user_id: @user.id)
+      end
   end
 
   def create
@@ -31,7 +36,6 @@ class OrdersController < ApplicationController
     @carts = @user.carts
     @orders = Order.find_by(user_id: @user.id)
     @delivery_price = DeliveryPrice.find(1).delivery_price
-
 
 
     # 
