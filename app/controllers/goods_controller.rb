@@ -30,10 +30,10 @@ class GoodsController < ApplicationController
     @good = Good.find(params[:id])
     @music_titles = MusicTitle.where(good_id: @good.id)
 
-    if @good.goods_status == 0
-      @status = "販売中"
-    else
+    if @good.goods_status == 1
       @status = "販売停止中"
+    else
+      @status = "販売中"
     end
   end
 
