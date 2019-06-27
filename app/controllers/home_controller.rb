@@ -5,7 +5,7 @@ class HomeController < ApplicationController
   def top
   end
 
-  def done
+  def finish
   	# 1.Ordersテーブルの buy_flagを1にする
   	
   	@order = Order.find_by(user_id: current_user.id)
@@ -25,9 +25,13 @@ class HomeController < ApplicationController
   	@cart.destroy
 
 
-  	render "/home/done"
+  	redirect_to home_done_path
   	#binding.pry
 
+  end
+
+  def done
+    
   end
 
   private
