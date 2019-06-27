@@ -73,7 +73,7 @@ class GoodsController < ApplicationController
   end
 
   def admin_update
-    good = Good.find(params[:id])
+    @good = Good.find(params[:id])
 
     if good.update(good_params)
 
@@ -92,7 +92,7 @@ class GoodsController < ApplicationController
     
     # updateに失敗した場合は、編集画面に戻す
     else
-      render "admin/edit"
+      render "admin_edit"
     end
   end
 
