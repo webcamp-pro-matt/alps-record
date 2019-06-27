@@ -74,12 +74,27 @@ class GoodsController < ApplicationController
   end
 
   def admin_update
-    @good = Good.find(params[:id])
-    if @good.update(good_params)
+    good = Good.find(params[:id])
+
+    # 曲順を入れる処理をする関数に@goodを渡す
+    song_number_set(good)
+
+    binding.pry
+
+    if good.update(good_params)
       redirect_to admin_goods_path
     else
       render "admin/edit"
       #aaa
+    end
+  end
+
+  # 曲順を入れる関数 引数:Good（単数）を入れると、曲順を1から設定します。
+  def song_number_set(good)
+    song_number = 1
+    good.music_titles.each do |music|
+      music.song_number = song_number
+      song_number = song_number + 1
     end
   end
 
