@@ -8,5 +8,5 @@ class Good < ApplicationRecord
 	accepts_nested_attributes_for :carts, :orders_children
 
 	validates :price, presence: true, format: { with: /\A[0-9]+\Z/ }
-	validates :artist, :goods_title, :type, :label, :stock, presence: true
+	validates :artist, :goods_title, :rabel, :stock, presence: true
 end
