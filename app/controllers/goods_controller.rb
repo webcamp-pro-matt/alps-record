@@ -52,9 +52,12 @@ class GoodsController < ApplicationController
       song_number = song_number + 1
     end
 
-    @good.save
+    if @good.save
     # 商品一覧ページにて戻す
-    redirect_to admin_goods_path
+      redirect_to admin_goods_path
+    else
+      redirect_to admin_goods_path
+    end
   end
 
   def admin_destroy
@@ -79,7 +82,6 @@ class GoodsController < ApplicationController
       redirect_to admin_goods_path
     else
       render "admin/edit"
-      #aaa
     end
   end
 

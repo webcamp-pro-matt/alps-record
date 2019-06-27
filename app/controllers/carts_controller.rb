@@ -17,18 +17,22 @@ class CartsController < ApplicationController
   def create
   	@cart = Cart.new(cart_params)
   	@cart.user_id = current_user.id
+    @good = Cart.find_by(good_id: params[:id])
   	if @cart.save
   		redirect_to carts_path
   	else
-  	 render "show"
+  	  redirect_to goods_path
   	end
 
   end
 
   def update
     @cart = Cart.find(params[:id])
-    @cart.update(cart_params)
-    redirect_to carts_path
+    if @cart.update(cart_params)
+      redirect_to carts_path
+    else
+      redirect_to carts_path
+    end
   end
 
   def destroy
