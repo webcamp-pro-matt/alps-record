@@ -151,12 +151,12 @@
 					            <!-- <td class="text-center"><%= @child.name_kanji_sei + @child.name_kanji_mei %></td> -->
 					            <!-- <td class="text-center"><a href="#">受付</a></td> -->
 					            <td>
-						            <% if order.delivery_status == 0 %>
-						            	<%= link_to "受付中", edit_admin_order_path(order.id), class: "text-center" %>
+						            <% if order.delivery_status == 2 %>
+						            	<%= link_to "出荷済み", edit_admin_order_path(order.id), class: "text-center" %>
 						            <% elsif order.delivery_status == 1 %>
 						            	<%= link_to "準備中", edit_admin_order_path(order.id), class: "text-center" %>
 						            <% else %>
-						            	<%= link_to "出荷済み", edit_admin_order_path(order.id), class: "text-center" %>
+						            	<%= link_to "受付中", edit_admin_order_path(order.id), class: "text-center" %>
 						            <% end %>
 					        	</td>
 					        </tr>

@@ -74,7 +74,6 @@ class GoodsController < ApplicationController
 
   def admin_update
     good = Good.find(params[:id])
-
     if good.update(good_params)
 
       # グッズの中身を入れ替える

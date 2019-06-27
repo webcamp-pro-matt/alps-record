@@ -81,9 +81,9 @@ _<div class="container">
 			            	  <td class="text-center"><%= order.user.users_children[0].name_kanji_sei + order.user.users_children[0].name_kanji_mei %></td>
 			            	  <% end %>
 			            	  <% end %>
-			            <% if order.delivery_status == 0 %>
+			            <% if order.delivery_status == 2 %>
 			            <td class="text-center">
-			            	<%= link_to "受付", edit_admin_order_path(order.id) %>
+			            	<%= link_to "出荷済み", edit_admin_order_path(order.id) %>
 			            </td>
 			            <% elsif order.delivery_status == 1 %>
 			            <td class="text-center">
@@ -91,7 +91,7 @@ _<div class="container">
 			            </td>
 			            <% else %>
 			            <td class="text-center">
-			            	<%= link_to "出荷済み", edit_admin_order_path(order.id) %>
+			            	<%= link_to "受付", edit_admin_order_path(order.id) %>
 			            </td>
 			            <% end %>
 			        </tr>
