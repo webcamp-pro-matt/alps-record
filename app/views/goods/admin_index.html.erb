@@ -31,7 +31,7 @@
 							<td><a href="<%= "/admin/goods/#{good.id}" %>"><%= attachment_image_tag good, :jacket_image, format: "jpeg", fallback: "no_image.jpg", size: "100x100" %></a></td>
 							<td><%= good.artist %></td>
 							<td><%= good.goods_title %></td>
-							<% if good.goods_status == 1 %>
+							<% if good.goods_status == "1" %>
 							<td><p>販売停止中</p></td>
 							<% else %>
 							<td><p>販売中</p></td>
