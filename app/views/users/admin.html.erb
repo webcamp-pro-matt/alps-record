@@ -15,7 +15,7 @@ _<div class="container">
 <!-- 購入履歴表示部分 bootstrapでレイアウト変更 -->
 <div class="container">
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-12">
 			<h1 class="text-center">購入履歴</h1>
 			<br>
 			<table class="table table-bordered">
@@ -28,7 +28,7 @@ _<div class="container">
 				<colgroup span="1" width="10%"></colgroup>
 				<colgroup span="1" width="10%"></colgroup>
 
-			    <thead>
+				<thead>
 			        <tr>
 			        	<!-- 文字数で勝手にテーブルサイズが変更される対応 -->
 			        		<th class="text-center">購入者</th>
@@ -42,10 +42,11 @@ _<div class="container">
 			    </thead>
 			    <tbody>
 			    	<% @order.each do |order| %>
+			    	<% order.orders_children.each do |order_child| %>
 			        <tr>
 			            <td class="text-center"><%= order.user.users_children[0].name_kanji_sei + order.user.users_children[0].name_kanji_mei %></td>
 			            <td class="text-center small"><%= order.created_at.strftime("%Y-%m-%d") %> </td>
-			            <% order.orders_children.each do |order_child| %>
+			            <%# order.orders_children.each do |order_child| %>
 			            <td>
 			            	<!-- 購入内容を2分割にする。 -->
 				        	<div class="row">

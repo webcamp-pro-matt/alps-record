@@ -6,29 +6,32 @@
 	<div class="row">
 		<div class="col-md-12">
 			<table class="table">
-			<thead>
-				<colgroup span="1" style="width:10%;">
-				<colgroup span="2" style="width:10%;">
-				<colgroup span="1" style="width:40%;">
-				<colgroup span="1" style="width:20%;">
-				<colgroup span="1" style="width:10%;">
 
-			<div class="row">
-					<th>ID</th>
-					<th>名前</th>
-					<th>郵便番号</th>
-					<th>住所</th>
-					<th>e-mail</th>
-					<th>退会状態</th>
-				</div>
-				
-			</thead>
-			
+					<colgroup span="1" style="width:10%;">
+					<colgroup span="2" style="width:10%;">
+					<colgroup span="1" style="width:40%;">
+					<colgroup span="1" style="width:20%;">
+					<colgroup span="1" style="width:10%;">
+
+				<thead>
+						<th>ID</th>
+						<th>名前</th>
+						<th>郵便番号</th>
+						<th>住所</th>
+						<th>e-mail</th>
+						<th>退会状態</th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+
+				</thead>
+
 			<% @children.each do |child| %>
 				<tbody>
 					<!-- 複数の子供がいた場合は、先頭だけもってくる -->
 					<% if @temp_array.include?(child.user_id)  %>
-						
+
 					<% else %>
 
 						<td><%= child.user.id %></td>
@@ -39,16 +42,16 @@
 						<td><%= child.user.email %></td>
 
 						<% if child.user.resignation_flag == 1 %>
-							<td>退会</td>
+							<td style="color: red;">退会</td>
 						<% else %>
 							<td></td>
 						<% end %>
 
-						
+
 						<% @temp_array.push(child.user_id) %>
 					<% end %>
 
-					
+
 					<td><%#= user.name_kanji_sei %><%#= user.name_kanji_mei %></td>
 					<td><%#= user.users_child.post_code %></td>
 					<td><%#= user.address %></td>
@@ -58,11 +61,10 @@
 
 			</table>
 		</div>
-		
+
 		  <!-- <button type="button" class="btn btn-primary mx-auto"> -->
  			<%= link_to "戻る", admin_users_path, class: "btn btn-primary mx-auto" %>
  		  </button>
- 		
+
 	</div>
 </div>
- 
