@@ -25,7 +25,7 @@
             <!-- 管理者がログインしている場合 -->
             <% if current_user.admin_flag == 1  %>
               <!-- <a class="nav-item nav-link active" href="#">管理者ページ</a> -->
-              <%= link_to '管理者ページ', admin_users_path, class: "header-title nav-item nav-link text-dark active" %>
+              <%= link_to '管理者ページ', admin_users_path, class: "header-title nav-item nav-link text-dark ml-4 active" %>
               <!-- <a class="nav-item nav-link" href="#">商品一覧</a> -->
               <%= link_to '商品一覧', admin_goods_path, class: "header-title nav-item nav-link text-dark" %>
               <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "header-title nav-item nav-link text-dark" %>
@@ -44,11 +44,11 @@
           <!-- ログインしていない場合 -->
           <% else %>
             <!-- <a class="nav-item nav-link" href="#">新規登録</a> -->
-            <%= link_to '新規登録', new_user_registration_path, class: "header-title nav-item nav-link" %>
+            <%= link_to '新規登録', new_user_registration_path, class: "header-title nav-item nav-link text-dark ml-4" %>
             <!-- <a class="nav-item nav-link" href="#">ログイン</a> -->
-            <%= link_to 'ログイン', new_user_session_path, class: "header-title nav-item nav-link" %>
+            <%= link_to 'ログイン', new_user_session_path, class: "header-title nav-item nav-link text-dark ml-3" %>
             <!-- <a class="nav-item nav-link" href="#">商品一覧</a> -->
-            <%= link_to '商品一覧', goods_path, class: "header-title nav-item nav-link" %>
+            <%= link_to '商品一覧', goods_path, class: "header-title nav-item nav-link text-dark ml-3" %>
 
           <% end %>
         </div>

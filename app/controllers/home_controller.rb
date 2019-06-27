@@ -6,27 +6,30 @@ class HomeController < ApplicationController
   end
 
   def finish
-  	# 1.Ordersテーブルの buy_flagを1にする
-  	
-  	@order = Order.find_by(user_id: current_user.id)
-  	@order.buy_flag = 1
-  	@order.save
+  	# buy_flagが立っていないorderを検索	  
+	@order = Order.find_by(user_id: current_user.id, buy_flag: nil)
+	# buy_flagに1を立てる。
+	@order.buy_flag = 1
+	@order.save
 
   	# 2.OrdersChildrenにCartの内容を与える
-  	@orders_children = OrdersChild.new
-  	@cart = Cart.find_by(user_id: current_user.id)
-  	#binding.pry
-  	@orders_children.good_id = @cart.good_id
-  	@orders_children.order_value = @cart.cart_value
-  	@orders_children.order_id = @order.id
-  	@orders_children.save
+	@cart = Cart.where(user_id: current_user.id)
+
+	# カートの数だけOrdersChildを作成する。
+	@cart.each do |cart|
+		orders_child = OrdersChild.new
+		orders_child.good_id = cart.good_id
+		orders_child.order_value = cart.cart_value
+		orders_child.order_id = @order.id
+		orders_child.save
+	end
+	
 
   	# 3.Cartを消す
-  	@cart.destroy
+  	@cart.destroy_all
 
 
   	redirect_to home_done_path
-  	#binding.pry
 
   end
 
