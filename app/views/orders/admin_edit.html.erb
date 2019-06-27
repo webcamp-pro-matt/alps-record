@@ -33,13 +33,16 @@
 			</div>
 			<!-- <div class="form-check p-3 mb-2 bg-info text-white rounded"> -->
 
-			<!--上のラベルの方をform_forで送る　-->
+			<!--上のラベルの方をform_forで送る-->
 			<!-- <select>
    				<option value="値">受付</option>
    				<option value="値">準備中</option>
    				<option value="値">出荷完了</option>
 			</select> -->
 		<!-- </div> -->
+		<%= f.submit "更新", class: "btn btn-info" %>
+		 		 
+		 <% end %>
 	</div>
 	<div class="container" style="text-align: center;">
 
@@ -47,10 +50,7 @@
 			<div class="" style="margin: 30px;">
 				<!-- form_forで送る？ -->
 				
-		 			<%= f.submit "更新", class: "btn btn-info" %>
-		 			<%#= link_to "更新", show_admin_user_path(@order.id), class: "btn btn-info" %>
-		 		 
-		 		 <% end %>
+		 			
 	 		</div>
 	 		<div class="" style="margin: 50px;">
 		 		 <!-- <button type="button" class="btn btn-primary"> -->
