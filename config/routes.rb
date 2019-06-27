@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:index, :create, :show, :destroy, :new]
 
   get "/" => "home#top"
+  get "home/finish" => "home#finish"
   get "home/done" => "home#done"
 
 
