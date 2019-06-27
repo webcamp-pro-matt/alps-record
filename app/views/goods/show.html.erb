@@ -76,7 +76,7 @@
 						    <label for="text3a" class="col-sm-2 col-form-label">個数</label>
 						    <div class="col-sm-7">
 						     <!-- <input type="text" id="text3a" class="form-control"> -->
-						     <%= cart.number_field :cart_value %>
+						     <%= cart.number_field :cart_value, min: 1 %>
 						     <%= cart.hidden_field :good_id, :value => @good.id  %>
 						     <%# cart.fields_for :goods do |good| %>
 						     <%#= good.hidden_field :goods_id, :value => @good.id %>
