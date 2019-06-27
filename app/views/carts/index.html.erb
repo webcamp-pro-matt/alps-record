@@ -43,7 +43,7 @@
 											<option value="<%# num %>"><%#=num%></option>
 										<%# end %>
 									</select> -->
-									<%= f.number_field :cart_value %>
+									<%= f.number_field :cart_value, min: 1 %>
 									<a>個</a>
 									<%#= f.hidden_field :cart_value, :value => num %>
 									<%= f.submit "更新",class: "btn btn-info btn-sm" %>
