@@ -84,22 +84,8 @@
   <% end %>
   <%= f.add_nested_fields_link :music_titles, '曲を追加', class: "btn btn-info", role: 'button' %>
 
- <%= f.fields_for :music_titles do |music| %>
-    <div class="row">
-      <div class="col-md-2">
-        <div class="d-flex justify-content-center">
-          <p>ディスク内の曲</p>
-        </div>
-      </div>
-      <div class="col-md-10">
-        <p><input type="text" name="title" size="100"></p>
-        <%#= music.text_field :song %>
-      　<div class="d-flex justify-content-start">
-        <button type="button" class="btn btn-primary">曲を追加</button>
-      　</div>
-      </div>
-    </div>
-  <% end %>
+ 
+    
 
   <br>
 
