@@ -99,7 +99,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to admin_path
     else
-      render "admin/edit"
+      render "admin_edit"
     end
   end
 
