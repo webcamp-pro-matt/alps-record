@@ -43,16 +43,12 @@ class GoodsController < ApplicationController
   end
 
   def admin_create
-    @good = Good.new(good_params)
+    good = Good.new(good_params)
 
-    # 曲順を入れる処理
-    song_number = 1
-    @good.music_titles.each do |music|
-      music.song_number = song_number
-      song_number = song_number + 1
-    end
+    # 曲順をセット
+    song_number_set(good)
 
-    if @good.save
+    if good.save
     # 商品一覧ページにて戻す
       redirect_to admin_goods_path
     else
@@ -79,13 +75,22 @@ class GoodsController < ApplicationController
   def admin_update
     good = Good.find(params[:id])
 
-    # 曲順を入れる処理をする関数に@goodを渡す
-    song_number_set(good)
-
-    binding.pry
-
     if good.update(good_params)
-      redirect_to admin_goods_path
+
+      # グッズの中身を入れ替える
+      # 曲順を入れる処理をする関数に@goodを渡す
+      song_number_set(good)
+
+      # saveに成功した場合は、商品一覧ページに遷移させる
+      if good.save
+        redirect_to admin_goods_path
+
+      # saveに失敗した場合は、編集画面に戻す
+      else
+        render "admin/edit"
+      end
+    
+    # updateに失敗した場合は、編集画面に戻す
     else
       render "admin/edit"
     end
