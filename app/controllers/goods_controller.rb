@@ -30,7 +30,7 @@ class GoodsController < ApplicationController
     @good = Good.find(params[:id])
     @music_titles = MusicTitle.where(good_id: @good.id)
 
-    if @good.goods_status == 1
+    if @good.goods_status == "1"
       @status = "販売停止中"
     else
       @status = "販売中"
@@ -110,7 +110,7 @@ class GoodsController < ApplicationController
   private
   def good_params
     # モデルの複数形_attributes
-    params.require(:good).permit(:id, :artist, :goods_title , :jacket_image, :price, :rabel, :stock, music_titles_attributes:[:id, :song, :_destroy])
+    params.require(:good).permit(:id, :artist, :goods_status, :goods_title, :jacket_image, :price, :rabel, :stock, music_titles_attributes:[:id, :song, :_destroy])
     #params.require(:music_title).permit(:song)
   end
 
