@@ -77,17 +77,18 @@ class GoodsController < ApplicationController
   end
 
   def admin_update
-    good = Good.find(params[:id])
+    @good = Good.find(params[:id])
 
     # 曲順を入れる処理をする関数に@goodを渡す
-    song_number_set(good)
+    song_number_set(@good)
 
-    binding.pry
+    #binding.pry
 
-    if good.update(good_params)
+    if @good.update(good_params)
       redirect_to admin_goods_path
+
     else
-      render "admin/edit"
+      render "admin_edit"
     end
   end
 
