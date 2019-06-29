@@ -1,2 +1,57 @@
-<h1>Users#admin_edit</h1>
-<p>Find me in app/views/users/admin_edit.html.erb</p>
+<h1>編集</h1>
+<%= form_for @user, url: update_admin_user_path(@user.id) do |f| %>
+  
+
+  <%= f.fields_for :users_children do |child| %>
+
+    <h4>名前（性）</h4>
+    <div class="field">
+        <%= child.label :name_kanji_sei %><br />
+        <%= child.text_field :name_kanji_sei, autofocus: true, autocomplete: "name_kanji_sei" %>
+    </div>
+
+    <h4>名前（名）</h4>
+    <div class="field">
+        <%= child.label :name_kanji_mei %><br />
+        <%= child.text_field :name_kanji_mei, autofocus: true, autocomplete: "name_kanji_mei" %>
+    </div>
+
+    <h4>名前（カナ性）</h4>
+    <div class="field">
+        <%= child.label :name_kana_sei %><br />
+        <%= child.text_field :name_kana_sei, autofocus: true, autocomplete: "name_kana_sei" %>
+    </div>
+
+    <h4>名前（カナ名）</h4>
+    <div class="field">
+        <%= child.label :name_kana_mei %><br />
+        <%= child.text_field :name_kana_mei, autofocus: true, autocomplete: "name_kana_mei" %>
+    </div>
+
+    <h4>郵便番号</h4>
+    <div class="field">
+        <%= child.label :post_code %><br />
+        <%= child.text_field :post_code, autofocus: true, autocomplete: "post_code", maxlength: '7' %>
+    </div>
+
+    <h4>住所</h4>
+    <div class="field">
+        <%= child.label :address %><br />
+        <%= child.text_field :address, autofocus: true, autocomplete: "address" %>
+    </div>
+  <% end %>
+
+    <h4>電話番号</h4>
+    <div class="field">
+        <%= f.label :phone_number %><br />
+        <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
+    </div>
+
+    <h4>メールアドレス</h4>
+    <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+    <%= f.submit '更新' %>
+
+<% end %>

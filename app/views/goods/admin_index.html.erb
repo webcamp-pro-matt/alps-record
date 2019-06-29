@@ -1,2 +1,51 @@
-<h1>Goods#admin_index</h1>
-<p>Find me in app/views/goods/admin_index.html.erb</p>
+<div class="title">
+	<h1>商品一覧</h1>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table">
+				<thead>
+					<colgroup span="1" style="width:10%;">
+					<colgroup span="2" style="width:20%;">
+					<colgroup span="1" style="width:10%;">
+
+				<div class="row">
+						<th></th>
+						<th>アーティスト名</th>
+						<th>シングル/アルバム名</th>
+						<th>販売状況</th>
+				</div>
+					
+				</thead>
+				
+				<tbody>
+				<% @goods.each do |good| %>
+				
+					<!-- goodテーブルにgood_delete_flagが立っていたら、表示しない -->
+					<% if good.good_delete_flag == 1 %>
+						<!-- 表示をしない -->
+					<% else %>
+						<tr>
+							<td><a href="<%= "/admin/goods/#{good.id}" %>"><%= attachment_image_tag good, :jacket_image, format: "jpeg", fallback: "no_image.jpg", size: "100x100" %></a></td>
+							<td><%= good.artist %></td>
+							<td><%= good.goods_title %></td>
+							<% if good.goods_status == "1" %>
+							<td><p>販売停止中</p></td>
+							<% else %>
+							<td><p>販売中</p></td>
+							<% end %>
+						</tr>
+					<% end %>
+					
+				<% end %>
+				</tbody>
+			</table>
+		</div>
+		
+ 		<%= link_to "戻る", admin_users_path, class: "btn btn-primary mx-auto" %>
+ 		
+	</div>
+</div>
+ 

@@ -1,2 +1,69 @@
-<h1>Users#admin_index</h1>
-<p>Find me in app/views/users/admin_index.html.erb</p>
+<div class="title">
+	<h1>ユーザー一覧</h1>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table">
+
+					<colgroup span="1" style="width:10%;">
+					<colgroup span="2" style="width:10%;">
+					<colgroup span="1" style="width:40%;">
+					<colgroup span="1" style="width:20%;">
+					<colgroup span="1" style="width:10%;">
+
+				<thead>
+						<th>ID</th>
+						<th>名前</th>
+						<th>郵便番号</th>
+						<th>住所</th>
+						<th>e-mail</th>
+						<th>退会状態</th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+
+				</thead>
+
+			<% @children.each do |child| %>
+				<tbody>
+					<!-- 複数の子供がいた場合は、先頭だけもってくる -->
+					<% if @temp_array.include?(child.user_id)  %>
+
+					<% else %>
+
+						<td><%= child.user.id %></td>
+						<td><%= link_to child.name_kanji_sei + child.name_kanji_mei, show_admin_user_path(child.user_id) %></td>
+						<td>〒<%= child.post_code.chars[0] + child.post_code.chars[1] + child.post_code.chars[2] + "-" + child.post_code.chars[3] + child.post_code.chars[4] + child.post_code.chars[5] + child.post_code.chars[6] %></td>
+						<td><%= child.address %></td>
+						<td><%= child.user.email %></td>
+
+						<% if child.user.resignation_flag == 1 %>
+							<td style="color: red;">退会</td>
+						<% else %>
+							<td></td>
+						<% end %>
+
+
+						<% @temp_array.push(child.user_id) %>
+					<% end %>
+
+					<!-- 余白調整用です。消さないで -->
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<!-- ここまで -->
+
+				</tbody>
+			<% end %>
+
+			</table>
+		</div>
+
+ 			<%= link_to "戻る", admin_users_path, class: "btn btn-primary mx-auto" %>
+
+	</div>
+</div>

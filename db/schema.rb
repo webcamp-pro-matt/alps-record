@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_10_074225) do
+ActiveRecord::Schema.define(version: 2019_06_26_090824) do
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "goods_id"
+    t.integer "good_id"
     t.integer "cart_value"
     t.integer "user_id"
   end
@@ -34,18 +34,19 @@ ActiveRecord::Schema.define(version: 2019_06_10_074225) do
     t.string "artist"
     t.string "goods_title"
     t.integer "album_flag"
-    t.string "jacket_image"
+    t.string "jacket_image_id"
     t.string "type"
     t.string "rabel"
     t.integer "price"
     t.integer "stock"
     t.string "goods_status"
+    t.integer "good_delete_flag"
   end
 
   create_table "music_titles", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "goods_id"
+    t.integer "good_id"
     t.string "song"
     t.integer "song_number"
     t.integer "disc_number"
@@ -54,19 +55,22 @@ ActiveRecord::Schema.define(version: 2019_06_10_074225) do
   create_table "orders", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "users_id"
+    t.integer "user_id"
     t.string "other_address"
     t.integer "payment_method"
     t.string "delivery"
     t.string "other_name"
     t.string "other_kana"
     t.string "other_post_code"
+    t.integer "delivery_select_flag"
+    t.integer "buy_flag"
+    t.integer "delivery_status"
   end
 
   create_table "orders_children", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "goods_id"
+    t.integer "good_id"
     t.integer "order_value"
     t.integer "order_id"
   end
@@ -85,9 +89,9 @@ ActiveRecord::Schema.define(version: 2019_06_10_074225) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "phone_number"
-    t.integer "admin_flag"
-    t.integer "resignation_flag"
+    t.string "phone_number", null: false
+    t.integer "admin_flag", default: 0, null: false
+    t.integer "resignation_flag", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

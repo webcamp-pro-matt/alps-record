@@ -1,2 +1,73 @@
-<h1>Carts#index</h1>
-<p>Find me in app/views/carts/index.html.erb</p>
+<div class="container">
+	<div class="row">
+		<!-- カートのテーブル部分 -->
+		<div class="col-md-9">
+				<h1>カート</h1>
+				<table class="table">
+
+					<!-- テーブルのサイズ設定 -->
+					<colgroup span="1" width="20%"></colgroup> <!-- 画像のカラム -->
+					<colgroup span="1" width="20%"></colgroup> <!-- 削除ボタンのカラム -->
+					<colgroup span="1" width="20%"></colgroup> <!-- 商品名のカラム -->
+					<colgroup span="1" width="20%"></colgroup> <!-- 価格のカラム -->
+					<colgroup span="1" width="20%"></colgroup> <!-- 数量のカラム -->
+
+					<thead>
+						<tr>
+							<th></th>
+							<th></th>
+							<th>商品名</th>
+							<th>価格</th>
+							<th>数量</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<% @carts.each do |cart| %>
+						<tr>
+							
+							<!-- あくまで仮置きです。imgタグとかで再設定する必要あり -->
+							<td><%= attachment_image_tag cart.good, :jacket_image, format: "jpeg", fallback: "no_image.jpg", size: "100x100" %></td>
+							<td>
+								<!-- <p>商品名</p> -->
+								<!--<button type="button" class="btn btn-danger btn-sm">削除</button>-->
+								<%= link_to "削除", cart_path(cart.id),class: "btn btn-danger btn-sm", method: :delete %>
+							</td>
+							<td><%= cart.good.goods_title %></td>
+							<td><%= cart.good.price %>円</td>
+							<td>
+								<%= form_for cart, url:cart_path(cart.id) do |f| %>
+									<%= f.number_field :cart_value, min: 1 %>
+									<a>個</a>
+									<%= f.submit "更新",class: "btn btn-info btn-sm" %>
+								<% end %>
+							</td>
+							
+						</tr>
+						<% end %>
+						
+					</tbody>
+				</table>
+
+
+
+		</div>
+
+		<!-- カートの合計金額、購入ボタン部分 -->
+		<div class="col-md-3">
+			<br>
+			<br>
+			<div class="card">
+				<div class="card-body text-left">
+					<h4>合計価格</h4>
+				</div>
+				<div class="card-body">
+					<p class="text-left">合計価格:</p>
+					<p class="text-right">¥<%= @price %>円</p>
+						<%= link_to "支払方法選択へ",orders_path,class: "btn btn-success btn-lg btn-block" %></button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</div>

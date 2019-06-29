@@ -1,2 +1,110 @@
-<h1>Goods#admin_edit</h1>
-<p>Find me in app/views/goods/admin_edit.html.erb</p>
+
+<div class="containar">
+  <%= form_for @good, url: update_admin_good_path do |f| %>
+  <div class="row">
+    
+      <div class="col-md-2">
+        <div class="d-flex justify-content-center">
+          <p>アーティスト名</p>
+        </div>
+      </div>
+      <div class="col-md-10">
+        <%= f.text_field :artist %>
+      </div>
+
+      <div class="col-md-2">
+        <div class="d-flex justify-content-center">
+          <p>シングル・アルバム名</p>
+        </div>
+      </div>
+      <div class="col-md-10">
+        <%= f.text_field :goods_title %>
+      </div>
+
+      <div class="col-md-2">
+        <div class="d-flex justify-content-center">
+          <p>ジャケット画像</p>
+        </div>
+      </div>
+      <div class="col-md-10">
+        <%= f.attachment_field :jacket_image %>
+      </div>
+
+      <div class="col-md-2">
+        <div class="d-flex justify-content-center">
+          <p>価格（税別価格）</p>
+        </div>
+      </div>
+      <div class="col-md-10">
+        <%= f.text_field :price %>
+      </div>
+
+      <div class="col-md-2">
+        <div class="d-flex justify-content-center">
+          <p>レーベル名</p>
+        </div>
+      </div>
+      <div class="col-md-10">
+        <%= f.text_field :rabel %>
+
+      </div>
+
+  <div class="col-md-2">
+    <div class="d-flex justify-content-center">
+      <p>ジャンル</p>
+    </div>
+  </div>
+  <div class="col-md-10">
+    <%= f.text_field :type %>
+  </div>
+  </div>
+
+  <%= f.nested_fields_for :music_titles, wrapper_tag: :div do |music| %>
+  <div class="row">
+      <div class="col-md-2">
+        <div class="d-flex justify-content-center">
+          <p>ディスク内の曲</p>
+        </div>
+      </div>
+      <div class="col-md-10">
+        <%= music.text_field :song %>
+      　<div class="d-flex justify-content-center">
+        <%= music.remove_nested_fields_link '削除', class: "btn btn-primary", role: 'button' %>
+      　</div>
+      </div>
+    </div>
+  <% end %>
+  <%= f.add_nested_fields_link :music_titles, '曲を追加', class: "btn btn-info", role: 'button' %>
+
+ 
+    
+
+  <br>
+
+  <div class="row">
+    <div class="col-md-2">
+      <div class="d-flex justify-content-center">
+        <p>在庫数</p>
+      </div>
+    </div>
+    <div class="col-md-10">
+      <%= f.text_field :stock %>
+    </div>
+    <div class="col-md-2">
+      <div class="d-flex justify-content-center">
+        <p>ステータス</p>
+      </div>
+    </div>
+    <div class="col-sm-3 btn-group" data-toggle="buttons">
+      <label class="btn btn-outline-secondary active" style="width:50%">
+        <%= f.radio_button :goods_status, 0 %> 販売中
+      </label>
+      <label class="btn btn-outline-secondary" style="width:50%">
+        <%= f.radio_button :goods_status, 1 %> 販売中止中
+      </label>
+    </div>
+  </div>
+  <%= f.submit "更新", class: "btn btn-primary btn-block" %>
+
+  <% end %>
+</div>

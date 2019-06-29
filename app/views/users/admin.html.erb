@@ -1,2 +1,123 @@
-<h1>Users#admin</h1>
-<p>Find me in app/views/users/admin.html.erb</p>
+_<div class="container">
+	<button class="btn btn-primary btn-block">アルプスレコード（管理者ページ）</button>
+	<br>
+	<div class="row justify-content-around">
+		<%= link_to "商品一覧", admin_goods_path, class: "btn btn-warning" %>
+		<%= link_to "ユーザー一覧", admin_path, class: "btn btn-info" %>
+		<%= link_to "商品を追加", admin_goods_new_path, class: "btn btn-danger" %>
+	</div>
+	<br>
+	<br>
+</div>
+
+<!-- 購入履歴表示部分 -->
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			<h1 class="text-center">購入履歴</h1>
+			<br>
+			<table class="table table-bordered">
+			<!-- table-striped:ボーダー設定 -->
+
+				<colgroup span="1" width="10%"></colgroup>
+				<colgroup span="1" width="12%"></colgroup>
+				<colgroup span="1" width="38%"></colgroup>
+				<colgroup span="1" width="20%"></colgroup>
+				<colgroup span="1" width="10%"></colgroup>
+				<colgroup span="1" width="10%"></colgroup>
+
+				<thead>
+			        <tr>
+			        	<!-- 文字数で勝手にテーブルサイズが変更される対応 -->
+			        		<th class="text-center">購入者</th>
+			        		<th class="text-center">購入日</th>
+			        		<th class="text-center">購入内容</th>
+			        		<th class="text-center">送付先</th>
+			        		<th class="text-center">送付先氏名</th>
+			        		<th class="text-center">ステータス</th>
+			        	<!-- text-center:中央揃え -->
+			        </tr>
+			    </thead>
+			    <tbody>
+			    	<% @order.each do |order| %>
+						<tr>
+							<!-- 1.購入者 -->
+							<td class="text-center"><%= order.user.users_children[0].name_kanji_sei + order.user.users_children[0].name_kanji_mei %></td>
+
+							<!-- 2.購入日 -->
+							<td class="text-center small"><%= order.created_at.strftime("%Y-%m-%d") %> </td>
+
+							<!-- 3.購入内容 -->
+							<td>
+								<% order.orders_children.each do |order_child|  %>
+
+									<!-- 購入内容を2分割にする。 -->
+									<div class="row">
+										<div class="col-md-6">
+											<!-- small:文字のサイズを75％ -->
+											<!-- text-right:右揃え -->
+											<p class="small text-right">シングル/アルバム名:</p>
+											<p class="small text-right">価格:</p>
+											<p class="small text-right">購入枚数:</p>
+											<p class="small text-right">小計:</p>
+										</div>
+										<div class="col-md-6">
+											<!-- text-center:中央揃え -->
+											<p class="small text-center"><%= order_child.good.goods_title %></p>
+											<p class="small text-center">¥<%= order_child.good.price %>円</p>
+											<p class="small text-center"><%= order_child.order_value %>枚</p>
+											<p class="small text-center">¥<%= order_child.good.price * order_child.order_value %>円</p>
+										</div>
+									</div>
+
+								<% end %>
+							</td>
+
+							<!-- 4.送付先 -->
+							<td class="text-center">
+								<!-- 送付先が手入力の場合-->
+								<% if order.delivery_select_flag == 0 %>
+									<p class="small text-center">〒<%= order.other_post_code.chars[0] + order.other_post_code.chars[1] + order.other_post_code.chars[2] + "-" + order.other_post_code.chars[3] + order.other_post_code.chars[4] + order.other_post_code.chars[5] + order.other_post_code.chars[6] %></p>
+			            			<p class="small text-center"><%= order.other_address %></p>
+								<!-- 送付先が登録された情報の場合 -->
+								<% else %>
+									<p class="small text-center">〒<%= order.user.users_children[0].post_code.chars[0] + order.user.users_children[0].post_code.chars[1] + order.user.users_children[0].post_code.chars[2] + "-" + order.user.users_children[0].post_code.chars[3] + order.user.users_children[0].post_code.chars[4] + order.user.users_children[0].post_code.chars[5] + order.user.users_children[0].post_code.chars[6] %></p>
+			            			<p class="small text-center"><%= order.user.users_children[0].address %></p>
+								<% end %>
+							</td>
+
+							<!-- 5.送付先氏名 -->
+							<td class="text-center">
+								<!-- 送付先が手入力の場合-->
+								<% if order.delivery_select_flag == 0 %>
+									<%= order.other_name %>
+								<!-- 送付先が登録された情報の場合 -->
+								<% else %>
+									<%= order.user.users_children[0].name_kanji_sei + order.user.users_children[0].name_kanji_mei %>
+								<% end %>
+							</td>
+
+							<!-- 6.配送ステータス -->
+							<td class="text-center">
+								<!-- 出荷済みの場合 -->
+								<% if order.delivery_status == 2 %>
+									<%= link_to "出荷済み", edit_admin_order_path(order.id) %>
+								<!-- 準備中の場合 -->
+								<% elsif order.delivery_status == 1 %>
+									<%= link_to "準備中", edit_admin_order_path(order.id) %>
+								<!-- 受付の場合 -->
+								<% else %>
+									<%= link_to "受付", edit_admin_order_path(order.id) %>
+								<% end %>
+							</td>
+
+						</tr>
+
+					<% end %>
+			    	
+			    </tbody>
+			</table>
+		</div>
+	</div>
+</div>
+

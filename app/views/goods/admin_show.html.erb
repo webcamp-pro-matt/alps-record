@@ -1,2 +1,95 @@
-<h1>Goods#admin_show</h1>
-<p>Find me in app/views/goods/admin_show.html.erb</p>
+<div class="container">
+	<h2>商品詳細</h2>
+
+	<div class="row">
+		<!-- ジェケット画像表示させる所 -->
+		<div class="col-md-4">
+				<div class="card">
+					<div class="card-body text-center">
+						<%= attachment_image_tag @good, :jacket_image, format: "jpeg", fallback: "no_image.jpg", size: "300x300" %>
+					</div>
+				</div>
+		</div>
+		<!-- 商品名とかを表示させる所 -->
+		<div class="col-md-8">
+			<div class="card">
+				<div class="card-body text-center">
+					<!--商品タイトル -->
+					<%= "タイトル:　" + @good.goods_title %>
+				</div>
+			</div>
+
+			<br>
+
+			<div class="card">
+				<div class="card-body text-center">
+					<!-- アーティスト名 -->
+					<%= "アーティスト名:　" + @good.artist %>
+				</div>
+			</div>
+
+			<br>
+
+			<div class="card">
+				<div class="card-body text-center">
+				  <% if @good.stock == 0 %>
+				   <p>在庫なし</p>
+				   <% else %>
+				   <p>在庫あり</p>
+				   <% end %>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<br>
+
+	<div class="card">
+		<div class="card-body">
+			<h3>商品説明</h3>
+
+
+			<p>CD: 1枚目</p>
+			<% @music_titles.each do |title| %>
+				<p  style="line-height: 6px"><%= title.song_number.to_s + "曲目:　" + title.song %></p>
+			<% end %>
+		</div>
+	</div>
+
+	<br>
+
+    <div class="d-flex justify-content-end">
+    	<div class="b" style="border:solid 1px; height: 30px; width: 300px;">
+    		<p style="text-align: center; line-height: 30px;"> <%= @good.price %>円</p>
+    	</div>
+    </div>
+    <br>
+    <div class="d-flex justify-content-end">
+    	<div class="b" style="border:solid 1px; height: 30px; width: 300px;">
+    		<p style="text-align: center; line-height: 30px;"><%= "在庫数:　" + @good.stock.to_s %></p>
+    	</div>
+    </div>
+    <br>
+    <div class="d-flex justify-content-end">
+        <div class="b" style="border:solid 1px; height: 30px; width: 300px;">
+    		<p style="text-align: center; line-height: 30px;"> 現ステータス: <%= @status %></p>
+    	</div>
+    </div>
+    <br>
+
+    <div class="d-flex justify-content-end">
+      <div class="mx-2">
+      <%= link_to "編集", edit_admin_good_path(@good.id), class:"btn btn-success" %>
+     </div>
+     <div class="mx-2">
+      <%= link_to "削除", destroy_admin_good_path(@good.id), method: :delete, class:"btn btn-success",data: {confirm:"削除しますか？"}
+      %>
+     </div>
+     <div class="mx-2">
+      <%= link_to "戻る", admin_goods_path, class:"btn btn-success" %>
+     </div>
+    </div>
+
+
+</div>

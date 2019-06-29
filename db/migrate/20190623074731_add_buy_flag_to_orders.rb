@@ -1,0 +1,5 @@
+class AddBuyFlagToOrders < ActiveRecord::Migration[5.2]
+  def change
+  	add_column :orders, :buy_flag, :integer
+  end
+end

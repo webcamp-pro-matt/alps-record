@@ -1,2 +1,43 @@
-<h1>Orders#admin_edit</h1>
-<p>Find me in app/views/orders/admin_edit.html.erb</p>
+<div class="main-visual" style="margin: 50px;">
+  <div class="a" style="text-align: center;">
+	<h2>配送状況変更</h2>
+  </div>
+</div>
+
+<main clss="main" style="margin-top: 100px;">
+	
+	<div class="" style="text-align: center;">
+		<div class="" style="margin: 150px 0 20px 0;">
+			<%= form_for @order, url: update_admin_order_path(@order.id) do |f| %>
+			
+			<div class="form-check p-3 mb-2 bg-info text-white rounded">
+			<label>
+				<%= f.radio_button :delivery_status,0, class: "form-check-input" %>受付
+			</label>
+			</div>
+			<div class="form-check p-3 mb-2 bg-info text-white rounded">
+			<label>
+				<%= f.radio_button :delivery_status,1, class: "form-check-input" %>準備中
+			</label>
+			</div>
+			<div class="form-check p-3 mb-2 bg-info text-white rounded">
+			<label>
+				<%= f.radio_button :delivery_status,2, class: "form-check-input" %>出荷完了
+			</label>
+			</div>
+			
+		<%= f.submit "更新", class: "btn btn-info" %>
+		 		 
+		<% end %>
+	</div>
+	<div class="container" style="text-align: center;">
+
+
+			<div class="" style="margin: 30px;">
+	 		</div>
+	 		<div class="" style="margin: 50px;">
+		 		<%= link_to "戻る", show_admin_user_path(@order.user.id), class: "btn btn-primary" %>
+	 		</div>
+
+ 	</div>
+</main>

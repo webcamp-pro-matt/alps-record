@@ -1,2 +1,18 @@
-<h1>Home#done</h1>
-<p>Find me in app/views/home/done.html.erb</p>
+<div class="done-image">
+<div class="done-back">
+<div class="" style="text-align: center;">
+	<div class="clearfix">
+	<div class="bluelight">
+    <span>ご購入<br>ありがとう<br>      ございます。</span>
+</div>
+</div>
+</div>
+<span class="done-good">
+ 	<%= link_to "商品一覧", goods_path, class: "btn btn-warning mx-auto" %>
+</span>
+
+<span class="done-user">
+ 	<%= link_to "マイページ", user_path(current_user.id), class: "btn btn-info mx-auto" %>
+</span>
+</div>
+</div>

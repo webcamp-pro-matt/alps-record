@@ -10,6 +10,47 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <a href="/"><%= image_tag('top-rogo.png') %></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <!-- ユーザーがログインしているか確認 -->
+          <% if user_signed_in? %>
+
+            <!-- 管理者がログインしている場合 -->
+            <% if current_user.admin_flag == 1  %>
+              <%= link_to '管理者ページ', admin_users_path, class: "header-title nav-item nav-link text-dark ml-4 active" %>
+              <%= link_to '商品一覧', admin_goods_path, class: "header-title nav-item nav-link text-dark" %>
+              <%= link_to "商品追加", admin_goods_new_path, class: "header-title nav-item nav-link text-dark" %>
+              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "header-title nav-item nav-link text-dark" %>
+            
+            <!-- ユーザーがログインしている場合 -->
+            <% else %>
+                <%= link_to 'マイページ', user_path(current_user.id), class: "header-title nav-item nav-link text-dark ml-4" %>
+                <%= link_to '商品一覧', goods_path, class: "header-title nav-item nav-link text-dark ml-3" %>
+                <%= link_to 'カート', carts_path, class: "header-title nav-item nav-link text-dark ml-3" %>
+                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "header-title nav-item nav-link text-dark ml-3" %>
+            <% end %>
+
+          <!-- ログインしていない場合 -->
+          <% else %>
+            <%= link_to '新規登録', new_user_registration_path, class: "header-title nav-item nav-link text-dark ml-4" %>
+            <%= link_to 'ログイン', new_user_session_path, class: "header-title nav-item nav-link text-dark ml-3" %>
+            <%= link_to '商品一覧', goods_path, class: "header-title nav-item nav-link text-dark ml-3" %>
+
+          <% end %>
+        </div>
+      </div>
+    </nav>
+    <br>
     <%= yield %>
+  <footer>
+      <p class="footer-text">あなたに素敵な音楽が届きますように...</p>
+      <p class="footer-title">アルプスレコード</p>
+  </footer>
   </body>
 </html>
+

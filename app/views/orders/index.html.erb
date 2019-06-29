@@ -1,2 +1,95 @@
-<h1>Orders#index</h1>
-<p>Find me in app/views/orders/index.html.erb</p>
+<div class="container">
+	<%= form_for @order do |f| %>
+
+		<!-- お支払い方法部分 -->
+		<h1>お支払い方法</h1>
+		<div class="card">
+			<div class="card-body">
+
+				<div class="form-check p-3 mb-2 bg-primary text-white rounded">
+					<!-- レイアウト崩れたため、aタグで無理やり設定してます。 -->
+					<a>　</a>
+				<label>
+					<%= f.radio_button :payment_method, 0,class: "form-check-input" %>銀行振込
+				</label>
+				</div>
+				<div class="form-check p-3 mb-2 bg-warning text-white rounded">
+					<!-- レイアウト崩れたため、aタグで無理やり設定してます。 -->
+					<a>　</a>
+				<label>
+					<%= f.radio_button :payment_method, 1,class: "form-check-input" %>クレジットカード
+				</label>
+				</div>
+				<div class="form-check p-3 mb-2 bg-info text-white rounded">
+					<!-- レイアウト崩れたため、aタグで無理やり設定してます。 -->
+					<a>　</a>
+				<label>
+					<%= f.radio_button :payment_method, 2,class: "form-check-input" %>代金引換
+				</label>
+				</div>
+
+
+			</div>
+		</div>
+		<br>
+
+
+		<!-- 配送先選択部分 -->
+		<h1>配送先選択</h1>
+		<div class="card">
+			<div class="card-body">
+
+				<div class="form-check p-3 mb-2 bg-secondary text-white rounded">
+					<!-- レイアウト崩れたため、aタグで無理やり設定してます。 -->
+					<a>　</a>
+				<% @user_children.each do |child| %>
+					<label>
+						<%= f.radio_button :delivery_select_flag, 1, class: "form-check-input" %>
+						<p>〒<%= child.post_code.chars[0] + child.post_code.chars[1] + child.post_code.chars[2] + "-" + child.post_code.chars[3] + child.post_code.chars[4] + child.post_code.chars[5] + child.post_code.chars[6] %></p>
+						<p><%= child.address %></p>
+					</label>
+				<% end %>
+				</div>
+
+				<div class="form-check p-3 mb-2 bg-secondary text-white rounded">
+						<!-- レイアウト崩れたため、aタグで無理やり設定してます。 -->
+						<a>　</a>
+					<label>
+
+						<%= f.radio_button :delivery_select_flag, 0, class: "form-check-input" %>
+						<div class="d-flex justify-content-center">
+							<p>上記以外の配送先をご希望のお客様は、左のボタンをクリックしていただき、<br>
+							下記の記入欄に、お届け先のお名前、住所、郵便番号（ハイフン付き）をご記入ください。</p>
+						</div>
+
+						<label for="text3">名前（漢字）:</label>
+						<%= f.text_field :other_name, class: "form-control" %>
+
+						<label for="text3">名前（カナ）:</label>
+						<%= f.text_field :other_kana, class: "form-control" %>
+
+						<label for="text3">郵便番号:</label>
+						<%= f.text_field :other_post_code, class: "form-control" %>
+
+						<label for="text3">住所:</label>
+						<%= f.text_field :other_address, class: "form-control" %>
+
+					</label>
+					
+
+					
+				</div>
+
+
+
+
+			</div>
+		</div>
+		<br>
+
+		<%= f.submit "購入確認ページへ", class: "btn btn-success btn-lg btn-block" %>
+
+	<% end %>
+
+</div>
+

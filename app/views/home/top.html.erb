@@ -1,3 +1,30 @@
+<div class = "container">
+  <!-- 退会している人に対してメッセージを出す -->
+  <% if current_user == nil %>
+    <!-- 処理をしません -->
 
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+  <!-- ログインしている場合 -->
+  <% else %>
+    <!-- 退会している場合 -->
+    <% if current_user.resignation_flag == 1 %>
+      <h2>このユーザーは退会されています。新規にユーザーを作成してください。</h2>
+    <!-- 退会していない場合 -->
+    <% else %>
+      <!-- 処理をしません -->
+    <% end %>
+  <% end %>
+  <div class="top-box" id ="roop">
+    <div class="top-back">
+      <h1 class="top-title">~Alps-Record~</h1>
+      <p class="text-top">
+        Alps Record. I have enjoyed music with a lot of people since I first started this name.
+        The times go on. The music I want to hear during youth is also said to be "old song" by young children.
+        But music has lived for decades and hundreds of years in this world where we were gone. I would like young people to listen to such precious beautiful music this time.
+        Music can be heard by convenient things such as smartphones nowadays. I do not deny that. However, I want you to listen to the culture of CD to the present young child, and to feel the charm. I launched this site with such thoughts.<br>
+        <%= link_to "新規登録",new_user_registration_path, class: "btn-circle-fishy" %>
+        <%= link_to "ログイン",new_user_session_path, class: "btn-circle-fishy"  %>
+        <%= link_to "商品一覧",goods_path, class: "btn-circle-fishy"  %>
+    </p>
+    </div>
+  </div>
+</div>
