@@ -4,12 +4,6 @@
   <div class="row">
     <%= form_for @good, url: search_path do |f| %>
     <%= f.text_field :goods_title %>
-  	<!-- <form class="col-lg-2">
-      <div class="form-group">
-        <label class="control-label">商品名</label>
-      </div>
-  	  <button type="button" class="btn btn-default">検索</button>
-    </form> -->
     <%= f.submit "検索" %>
     <% end %>
   </div>
@@ -36,7 +30,6 @@
             <tr align="center">
               <td><%= good.price %>円</td>
             </tr>
-          <!-- 後で追加必要あり -->
             <tr align="center">
               <td>在庫あり</td>
             </tr>

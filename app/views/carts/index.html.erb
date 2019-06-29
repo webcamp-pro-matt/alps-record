@@ -37,15 +37,8 @@
 							<td><%= cart.good.price %>円</td>
 							<td>
 								<%= form_for cart, url:cart_path(cart.id) do |f| %>
-									<!-- <select name="cnt">
-										<option value="1" selected>1</option>　/*　←初期値は「selected」を入れておく　*/
-										<%# for num in 2..99 do %>
-											<option value="<%# num %>"><%#=num%></option>
-										<%# end %>
-									</select> -->
 									<%= f.number_field :cart_value, min: 1 %>
 									<a>個</a>
-									<%#= f.hidden_field :cart_value, :value => num %>
 									<%= f.submit "更新",class: "btn btn-info btn-sm" %>
 								<% end %>
 							</td>
@@ -71,7 +64,6 @@
 				<div class="card-body">
 					<p class="text-left">合計価格:</p>
 					<p class="text-right">¥<%= @price %>円</p>
-					<!-- <button type="button" class="btn btn-success btn-lg btn-block"> -->
 						<%= link_to "支払方法選択へ",orders_path,class: "btn btn-success btn-lg btn-block" %></button>
 				</div>
 			</div>

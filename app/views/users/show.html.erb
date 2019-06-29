@@ -4,7 +4,6 @@
   		<br>
   		<button type="button" class="btn btn-primary btn-lg btn-block">マイページ</button>
   		<h1 align="center">ようこそ！！<br><%= @user.users_children[0].name_kanji_mei %>さん</h1>
-  		<!-- <button type="button" class="btn btn-primary btn-lg btn-block">登録情報の編集</button> -->
       <button type="button" class="btn btn-default btn-block">
     <%= link_to "編集", edit_user_path(current_user) %>
   </button>
@@ -68,7 +67,6 @@
         <table class="table table-bordered">
         <!-- table-striped:ボーダー設定 -->
 
-          <!-- <colgroup span="1" width="10%"></colgroup> -->
           <colgroup span="1" width="12%"></colgroup>
           <colgroup span="1" width="48%"></colgroup>
           <colgroup span="1" width="20%"></colgroup>
@@ -78,7 +76,6 @@
             <thead>
                 <tr>
                   <!-- 文字数で勝手にテーブルサイズが変更される対応 -->
-                    <!--<th class="text-center">購入者</th> -->
                     <th class="text-center">購入日</th>
                     <th class="text-center">購入内容</th>
                     <th class="text-center">送付先</th>
@@ -159,7 +156,6 @@
   </div>
 
   <br>
-    <!-- <button type="button" class="btn btn-danger btn-lg btn-block">退会</button> -->
     <%= link_to "退会",user_path(@user.id), method: :delete, class: "btn btn-danger btn-lg btn-block", "data-confirm" => "退会します。よろしいでしょうか？" %>
 </div>
 

@@ -2,9 +2,7 @@ _<div class="container">
 	<button class="btn btn-primary btn-block">アルプスレコード（管理者ページ）</button>
 	<br>
 	<div class="row justify-content-around">
-		<!--<a href="#" class="btn btn-warning">商品一覧</a>-->
 		<%= link_to "商品一覧", admin_goods_path, class: "btn btn-warning" %>
-		<!--<a href="#" class="btn btn-info">ユーザー一覧</a>-->
 		<%= link_to "ユーザー一覧", admin_path, class: "btn btn-info" %>
 		<%= link_to "商品を追加", admin_goods_new_path, class: "btn btn-danger" %>
 	</div>
@@ -12,7 +10,7 @@ _<div class="container">
 	<br>
 </div>
 
-<!-- 購入履歴表示部分 bootstrapでレイアウト変更 -->
+<!-- 購入履歴表示部分 -->
 <div class="container">
 	<div class="row">
 		<div class="col-12">
@@ -46,7 +44,6 @@ _<div class="container">
 			        <tr>
 			            <td class="text-center"><%= order.user.users_children[0].name_kanji_sei + order.user.users_children[0].name_kanji_mei %></td>
 			            <td class="text-center small"><%= order.created_at.strftime("%Y-%m-%d") %> </td>
-			            <%# order.orders_children.each do |order_child| %>
 			            <td>
 			            	<!-- 購入内容を2分割にする。 -->
 				        	<div class="row">

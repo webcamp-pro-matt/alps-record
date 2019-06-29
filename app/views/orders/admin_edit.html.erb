@@ -6,13 +6,7 @@
 
 <main clss="main" style="margin-top: 100px;">
 	
-<!-- 	<div class="card" style="text-align: center;">
-		<div class="card-body">
-		<h4 class="" style="margin: 20px 0 20px 0;">現ステータス</h4>
-			<h3><span class="badge badge-info">受付</span></h3>
-		</div>
-	</div>
- -->	<div class="" style="text-align: center;">
+	<div class="" style="text-align: center;">
 		<div class="" style="margin: 150px 0 20px 0;">
 			<%= form_for @order, url: update_admin_order_path(@order.id) do |f| %>
 			
@@ -31,30 +25,18 @@
 				<%= f.radio_button :delivery_status,2, class: "form-check-input" %>出荷完了
 			</label>
 			</div>
-			<!-- <div class="form-check p-3 mb-2 bg-info text-white rounded"> -->
-
-			<!--上のラベルの方をform_forで送る-->
-			<!-- <select>
-   				<option value="値">受付</option>
-   				<option value="値">準備中</option>
-   				<option value="値">出荷完了</option>
-			</select> -->
-		<!-- </div> -->
+			
 		<%= f.submit "更新", class: "btn btn-info" %>
 		 		 
-		 <% end %>
+		<% end %>
 	</div>
 	<div class="container" style="text-align: center;">
 
 
 			<div class="" style="margin: 30px;">
-				<!-- form_forで送る？ -->
 	 		</div>
 	 		<div class="" style="margin: 50px;">
-		 		 <!-- <button type="button" class="btn btn-primary"> -->
-		 			<%#= link_to "戻る" %>
-		 			<%= link_to "戻る", show_admin_user_path(@order.user.id), class: "btn btn-primary" %>
-		 		 <!-- </button> -->
+		 		<%= link_to "戻る", show_admin_user_path(@order.user.id), class: "btn btn-primary" %>
 	 		</div>
 
  	</div>

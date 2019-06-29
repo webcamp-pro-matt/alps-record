@@ -26,12 +26,9 @@ class UsersController < ApplicationController
       # viewで使う、購入履歴を表示するか判断するフラグを作成
       @buy_view_flg = 1
 
-      #binding.pry
-
     # ユーザーの購入履歴がないとき(nil)
     else
 
-      #binding.pry
       # viewで使う、購入履歴を表示するか判断するフラグを作成
       @buy_view_flg = 0
 
@@ -70,9 +67,7 @@ class UsersController < ApplicationController
 
   def admin_index
     @users = User.all
-    # 仮で書いてます
     @children = UsersChild.all
-    # テストです
     @temp_array = Array.new
   end
 
@@ -80,7 +75,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @child = UsersChild.find_by(user_id: params[:id])
     @orders = Order.where(user_id: @user.id)
-    #binding.pry
   end
 
   def admin_destroy
@@ -97,8 +91,7 @@ class UsersController < ApplicationController
 
   def admin_update
     @user = User.find(params[:id])
-    #@user = User.find(params[:id])
-    #@users_children = UsersChild.find_by(user_id: @user.id)
+    
     if @user.update(user_params)
       redirect_to admin_path
     else

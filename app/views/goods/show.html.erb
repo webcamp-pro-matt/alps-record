@@ -58,11 +58,7 @@
 
 			<p>CD: 1枚目</p>
 			<% @music_titles.each do |title| %>
-			<!-- cssに書いた方がいいかも -->
 			<p  style="line-height: 6px"><%= title.song_number.to_s + "曲目:  " + title.song %></p>
-			<!--<p  style="line-height: 6px">2.bbbb</p>
-			<p  style="line-height: 6px">3.cccc</p>
-			<p  style="line-height: 6px">4.dddd</p> -->
 			<% end %>
 		</div>
 	</div>
@@ -75,17 +71,11 @@
 			<div class="col-md-5">
 				<div class="card">
 					<div class="card-body">
-						<!-- bootstrapのフォームを仮置きしてます。 form_forとかに書き換え必要かもしれません。-->
 						<div class="form-group row">
 						    <label for="text3a" class="col-sm-2 col-form-label">個数</label>
 						    <div class="col-sm-7">
-						     <!-- <input type="text" id="text3a" class="form-control"> -->
-						     <%# @cart.cart_value = 1 %>
 						     <%= cart.number_field :cart_value, min: 1, :value => 1 %>
 						     <%= cart.hidden_field :good_id, :value => @good.id  %>
-						     <%# cart.fields_for :goods do |good| %>
-						     <%#= good.hidden_field :goods_id, :value => @good.id %>
-						     <%# end %>
 						    </div>
 						    <div class="col-sm-3">
 						    	<p>個</p>
@@ -104,7 +94,6 @@
 	<div class="row">
 		<div class="col-md-6">
 			<%= cart.submit "カートに追加", class: "btn btn-warning btn-lg btn-block" %>
-			<!--<button type="button" class="btn btn-warning btn-lg btn-block">カートに追加</button> -->
 		</div>
 
 		<div class="col-md-6">
