@@ -11,18 +11,6 @@ class UsersController < ApplicationController
     # ユーザーの購入履歴があるとき
     if orders != nil
 
-      # 配送選択された状態で、処理を分岐する。
-      if orders.delivery_select_flag == 0
-        @post_code = @orders.other_post_code
-        @address = @orders.other_address
-        @name = @orders.other_name
-      else
-        @post_code = @user.users_children[0].post_code
-        @address = @user.users_children[0].address
-        @name = @user.users_children[0].name_kanji_sei + @user.users_children[0].name_kanji_mei
-  
-      end
-
       # viewで使う、購入履歴を表示するか判断するフラグを作成
       @buy_view_flg = 1
 
@@ -31,7 +19,7 @@ class UsersController < ApplicationController
 
       # viewで使う、購入履歴を表示するか判断するフラグを作成
       @buy_view_flg = 0
-
+      
     end
 
     

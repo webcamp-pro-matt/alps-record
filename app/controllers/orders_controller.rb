@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
   def show
     @user = current_user
     @carts = @user.carts
-    @orders = Order.find_by(user_id: @user.id)
+    @orders = Order.find_by(user_id: @user.id, buy_flag: nil)
     @delivery_price = DeliveryPrice.find(1).delivery_price
 
 
