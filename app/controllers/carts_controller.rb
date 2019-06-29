@@ -14,14 +14,20 @@ class CartsController < ApplicationController
   end
 
   def create
-  	@cart = Cart.new(cart_params)
-  	@cart.user_id = current_user.id
-    @good = Cart.find_by(good_id: params[:id])
-  	if @cart.save
-  		redirect_to carts_path
-  	else
-  	  redirect_to goods_path
-  	end
+    if user_signed_in?
+
+    	@cart = Cart.new(cart_params)
+    	@cart.user_id = current_user.id
+      @good = Cart.find_by(good_id: params[:id])
+    	if @cart.save
+    		redirect_to carts_path
+    	else
+    	  redirect_to goods_path
+    	end
+
+    else
+      redirect_to new_user_registration_path
+    end
 
   end
 
