@@ -49,7 +49,8 @@ class UsersController < ApplicationController
   end
 
   def admin
-    @order = Order.where(buy_flag: 1)
+    # idが古い順（最新順）に並び替える
+    @order = Order.where(buy_flag: 1).order(:id).reverse_order
     
   end
 
