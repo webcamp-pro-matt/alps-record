@@ -60,7 +60,6 @@ class GoodsController < ApplicationController
     @good = Good.find(params[:id])
     # グッズを単純に消すと、注文履歴との不整合が発生するので、
     # グッズ削除フラグを立てて、各ビューで表示しないように制御する。
-    # good.destroy
     @good.good_delete_flag = 1
     @good.save
     redirect_to admin_goods_path
@@ -111,7 +110,6 @@ class GoodsController < ApplicationController
   def good_params
     # モデルの複数形_attributes
     params.require(:good).permit(:id, :artist, :goods_status, :goods_title, :jacket_image, :price, :rabel, :stock, music_titles_attributes:[:id, :song, :_destroy])
-    #params.require(:music_title).permit(:song)
   end
 
   def search_params

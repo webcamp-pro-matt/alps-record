@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   #作ったコントローラを呼び出す
-  #devise_for :users, controllers: { registrations: 'users/registrations'}
   devise_for :users, :controllers =>{ 
        :registrations => 'users/registrations',
        :sessions => 'users/sessions'
@@ -23,7 +22,6 @@ Rails.application.routes.draw do
   get "admin/users/:id" => "users#admin_show", as: "show_admin_user"
   delete "admin/users/:id" => "users#admin_destroy", as: "destroy_admin_user"
   get "admin/users/:id/edit" => "users#admin_edit", as: "edit_admin_user"
-  # put "admin/users/:id" => "users#admin_update", as: "update_admin_user"
   patch "admin/users/:id" => "users#admin_update", as: "update_admin_user"
 
   get "admin/goods/" => "goods#admin_index"

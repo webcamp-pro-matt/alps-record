@@ -10,7 +10,6 @@ class CartsController < ApplicationController
     @carts.each do |cart|
       @price = @price + (cart.good.price*cart.cart_value)
     end
-    #binding.pry
 
   end
 

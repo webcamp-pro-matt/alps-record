@@ -1,8 +1,8 @@
 class OrdersController < ApplicationController
 
   before_action :resignation_flag_check?
-
   before_action :admin_flag_check?, only: [:admin_update, :admin_edit]
+
   def index
     @cart = Cart.find_by(user_id: current_user.id)
       if @cart == nil
@@ -22,12 +22,9 @@ class OrdersController < ApplicationController
       @order.save
       redirect_to order_path(@order.user_id)
     else
-
       @order.save
-      #binding.pry
       redirect_to order_path(@order.id)
     end
-    #binding.pry
 
   end
 
@@ -71,10 +68,10 @@ class OrdersController < ApplicationController
       end
 
     end
-    # binding.pry
     #
     # 現在時刻の取得ロジック 終わり
     #
+
 
     # 
     # 消費税の取得ロジック 始まり
@@ -118,7 +115,6 @@ class OrdersController < ApplicationController
 
     # 総計金額の定義
     @total_price = @price + target_delivery_price + @tax
-    #binding.pry
 
     # delivery_select_flagの値により、表示する住所を変える
     # delivery_select_flag == 0 :手入力
