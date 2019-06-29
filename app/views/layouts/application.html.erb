@@ -28,6 +28,7 @@
               <%= link_to '管理者ページ', admin_users_path, class: "header-title nav-item nav-link text-dark ml-4 active" %>
               <!-- <a class="nav-item nav-link" href="#">商品一覧</a> -->
               <%= link_to '商品一覧', admin_goods_path, class: "header-title nav-item nav-link text-dark" %>
+              <%= link_to "商品追加", admin_goods_new_path, class: "header-title nav-item nav-link text-dark" %>
               <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "header-title nav-item nav-link text-dark" %>
             <!-- ユーザーがログインしている場合 -->
             <% else %>
